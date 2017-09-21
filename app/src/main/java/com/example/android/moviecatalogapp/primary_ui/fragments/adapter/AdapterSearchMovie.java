@@ -1,4 +1,4 @@
-package com.example.android.moviecatalogapp.primary_ui.activities.fragments.adapter;
+package com.example.android.moviecatalogapp.primary_ui.fragments.adapter;
 
 import android.content.Context;
 import android.support.v4.content.ContextCompat;

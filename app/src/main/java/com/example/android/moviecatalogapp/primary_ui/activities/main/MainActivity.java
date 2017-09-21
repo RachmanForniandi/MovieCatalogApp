@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.android.moviecatalogapp.R;
-import com.example.android.moviecatalogapp.primary_ui.activities.fragments.SearchMovieFragment;
+import com.example.android.moviecatalogapp.primary_ui.fragments.SearchMovieFragment;
 
 public class MainActivity extends AppCompatActivity implements MainView{
 

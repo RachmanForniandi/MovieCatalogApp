@@ -4,4 +4,6 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="keyword_validation_message">Keyword is empty. Please fill it to begin searching movie</string>
+    <string name="daily_reminder">Daily Reminder</string>
+    <string name="message_daily_reminder">Hey, Check it out !</string>
 </resources>

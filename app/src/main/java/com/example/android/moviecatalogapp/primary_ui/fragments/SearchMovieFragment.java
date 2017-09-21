@@ -1,4 +1,4 @@
-package com.example.android.moviecatalogapp.primary_ui.activities.fragments;
+package com.example.android.moviecatalogapp.primary_ui.fragments;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -14,7 +14,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.android.moviecatalogapp.model.movie.search.SearchMovie;
-import com.example.android.moviecatalogapp.primary_ui.activities.fragments.adapter.AdapterSearchMovie;
+import com.example.android.moviecatalogapp.primary_ui.fragments.adapter.AdapterSearchMovie;
 import com.example.android.moviecatalogapp.production.R;
 
 import butterknife.BindView;
