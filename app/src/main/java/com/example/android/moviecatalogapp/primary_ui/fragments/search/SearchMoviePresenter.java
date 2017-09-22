@@ -1,4 +1,4 @@
-package com.example.android.moviecatalogapp.primary_ui.fragments;
+package com.example.android.moviecatalogapp.primary_ui.fragments.search;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,7 +9,7 @@ import com.example.android.moviecatalogapp.model.movie.search.ResultSearchMovie;
 import com.example.android.moviecatalogapp.model.movie.search.SearchMovie;
 import com.example.android.moviecatalogapp.primary_ui.base.MvpPresenter;
 import com.example.android.moviecatalogapp.primary_ui.activities.details.DetailMovieActivity;
-import com.example.android.moviecatalogapp.primary_ui.fragments.adapter.AdapterSearchMovie;
+import com.example.android.moviecatalogapp.primary_ui.fragments.search.adapter.AdapterSearchMovie;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 import java.util.ArrayList;

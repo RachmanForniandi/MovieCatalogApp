@@ -1,9 +1,29 @@
 <resources>
     <string name="app_name">MovieCatalogApp</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="keyword_validation_message">Keyword is empty. Please fill it to begin searching movie</string>
+    <string name="image_view_poster">image view poster</string>
+    <string name="title_movie">Title Movie</string>
+    <string name="overview_movie">Overview Movie</string>
+    <string name="release_date">Release Date</string>
     <string name="daily_reminder">Daily Reminder</string>
     <string name="message_daily_reminder">Hey, Check it out !</string>
+    <string name="now_playing">Now Playing</string>
+    <string name="upcoming">Upcoming</string>
+    <string name="date">Date</string>
+    <string name="_02_09_2017">02-09-2017</string>
+    <string name="set_date">Set Date</string>
+    <string name="time">Time</string>
+    <string name="_13_30">13:30</string>
+    <string name="set_time">Set Time</string>
+    <string name="save">Save</string>
+    <string name="detail">Detail</string>
+    <string name="share">Share</string>
+    <string name="search">Search</string>
+    <string name="settings">Settings</string>
+    <string name="notification">Notification</string>
+    <string name="daily_reminder_notification">Daily Reminder Notification</string>
+    <string name="turn_on_off_daily_reminder">Turn on/off daily reminder</string>
+    <string name="upcoming_reminder_notification">Upcoming Reminder Notification</string>
+    <string name="turn_on_off_upcoming_reminder">Turn on/off upcoming reminder</string>
 </resources>

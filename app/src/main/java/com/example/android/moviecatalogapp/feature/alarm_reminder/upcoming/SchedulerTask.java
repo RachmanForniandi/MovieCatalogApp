@@ -6,9 +6,6 @@ import com.google.android.gms.gcm.GcmNetworkManager;
 import com.google.android.gms.gcm.PeriodicTask;
 import com.google.android.gms.gcm.Task;
 
-/**
- * Created by Lenovo on 9/21/2017.
- */
 
 public class SchedulerTask {
 
@@ -17,9 +14,10 @@ public class SchedulerTask {
     public SchedulerTask(Context context){
         mGcmNetworkManager = GcmNetworkManager.getInstance(context);
     }
+
     public void createPeriodicTask(){
         Task periodicTask = new PeriodicTask.Builder()
-                .setService(UpComingMoviesJobService.class)
+                .setService(UpcomingMoviesJobService.class)
                 .setPeriod(60)
                 .setFlex(10)
                 .setTag("UpComingMovies")
@@ -27,9 +25,10 @@ public class SchedulerTask {
                 .build();
         mGcmNetworkManager.schedule(periodicTask);
     }
+
     public void cancelPeriodicTask(){
         if (mGcmNetworkManager != null){
-            mGcmNetworkManager.cancelTask("UpComingMovies",UpComingMoviesJobService.class);
+            mGcmNetworkManager.cancelTask("UpcomingMovies",UpcomingMoviesJobService.class);
         }
     }
 }

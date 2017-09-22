@@ -6,14 +6,11 @@ import java.util.List;
 
 import javax.annotation.Generated;
 
-/**
- * Created by Lenovo on 9/19/2017.
- */
+
 
 @Generated("net.hexar.json2pojo")
 @SuppressWarnings("unused")
 public class SearchMovie {
-
 
     @SerializedName("page")
     private long mPage;

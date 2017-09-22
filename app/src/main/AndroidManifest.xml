@@ -16,7 +16,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".primary_ui.activities.details.DetailMovieActivity"></activity>
+
+        <activity android:name=".primary_ui.activities.details.DetailMovieActivity"
+            android:theme="@style/AppTheme"/>
+
+        <service android:name=".feature.alarm_reminder.upcoming.UpcomingMoviesJobService"
+            android:exported="true"
+            android:permission="com.google.android.gms.permission.BIND_NETWORK_TASK_SERVICE">
+            <intent-filter>
+                <action android:name="com.google.android.gms.gcm.ACTION_TASK_READY" />
+            </intent-filter>
+        </service>
+
+        <activity android:name=".primary_ui.activities.settings.SettingsActivity"
+            android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>

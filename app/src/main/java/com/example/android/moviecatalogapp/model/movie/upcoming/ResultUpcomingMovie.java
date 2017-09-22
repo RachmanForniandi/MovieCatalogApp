@@ -9,8 +9,7 @@ import javax.annotation.Generated;
 
 @Generated("net.hexar.json2pojo")
 @SuppressWarnings("unused")
-
-public class ResultUpComingMovie {
+public class ResultUpcomingMovie {
 
     @SerializedName("vote_count")
     private long mVoteCount;

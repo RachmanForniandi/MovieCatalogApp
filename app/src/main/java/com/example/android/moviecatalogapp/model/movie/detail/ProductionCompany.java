@@ -4,9 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import javax.annotation.Generated;
 
-/**
- * Created by Lenovo on 9/21/2017.
- */
+
 
 @Generated("net.hexar.json2pojo")
 @SuppressWarnings("unused")
@@ -22,7 +20,7 @@ public class ProductionCompany {
         return mId;
     }
 
-    public void setmId(Long id) {
+    public void setId(Long id) {
         mId = id;
     }
 

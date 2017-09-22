@@ -7,8 +7,7 @@ import javax.annotation.Generated;
 
 @Generated("net.hexar.json2pojo")
 @SuppressWarnings("unused")
-
-public class DatesUpComingMovie {
+public class DatesUpcomingMovie {
 
     @SerializedName("maximum")
     private String mMaximum;
@@ -21,7 +20,7 @@ public class DatesUpComingMovie {
         return mMaximum;
     }
 
-    public void setmMaximum(String maximum) {
+    public void setMaximum(String maximum) {
         mMaximum = maximum;
     }
 

@@ -1,7 +1,8 @@
-package com.example.android.moviecatalogapp.primary_ui.fragments;
+package com.example.android.moviecatalogapp.primary_ui.fragments.search;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
@@ -13,16 +14,15 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.android.moviecatalogapp.model.movie.search.SearchMovie;
-import com.example.android.moviecatalogapp.primary_ui.fragments.adapter.AdapterSearchMovie;
-import com.example.android.moviecatalogapp.production.R;
+import com.example.android.moviecatalogapp.R;
+import com.example.android.moviecatalogapp.primary_ui.fragments.search.adapter.AdapterSearchMovie;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
-public class SearchMovieFragment extends Fragment implements SearchMovie{
+public class SearchMovieFragment extends Fragment implements SearchMovieView{
 
     private final String TAG = getClass().getSimpleName();
     private SearchMoviePresenter searchMoviePresenter;
@@ -44,7 +44,7 @@ public class SearchMovieFragment extends Fragment implements SearchMovie{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search_movie, container, false);
+        view = inflater.inflate(R.layout.fragment_search_movie, container, false);
         ButterKnife.bind(this, view);
         initPresenter();
         onAttachView();
@@ -72,15 +72,12 @@ public class SearchMovieFragment extends Fragment implements SearchMovie{
             Toast.makeText(
                     context,
                     getString(R.string.keyword_validation_message),
-                    Toast.LENGTH_SHORT
-            ).show();
+                    Toast.LENGTH_SHORT).show();
         }else {
             initProgressDialog();
             searchMoviePresenter.onSearchMovie(context, keyword);
         }
     }
-
-
 
     @Override
     public void onAttachView() {
@@ -116,5 +113,10 @@ public class SearchMovieFragment extends Fragment implements SearchMovie{
     public void searchMovieFailed(){
         dismissProgressDialog();
         Toast.makeText(getContext(), "Search Movie Failed", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onClickItem(Intent intentDetailMovieActivity){
+        startActivity(intentDetailMovieActivity);
     }
 }

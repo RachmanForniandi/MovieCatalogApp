@@ -9,7 +9,6 @@ import javax.annotation.Generated;
 
 @Generated("net.hexar.json2pojo")
 @SuppressWarnings("unused")
-
 public class DetailMovie {
 
 
@@ -117,7 +116,7 @@ public class DetailMovie {
         return mBudget;
     }
 
-    public void setmBudget(Long budget) {
+    public void setBudget(Long budget) {
         mBudget = budget;
     }
 
@@ -221,7 +220,7 @@ public class DetailMovie {
         return mRevenue;
     }
 
-    public void setmRevenue(Long revenue) {
+    public void setRevenue(Long revenue) {
         mRevenue = revenue;
     }
 

@@ -6,7 +6,7 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.icu.text.SimpleDateFormat;
+import java.text.SimpleDateFormat;
 import android.icu.util.Calendar;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.example.android.moviecatalogapp.R;
 
 import java.util.Locale;
+
 
 /**
  * Created by Lenovo on 9/21/2017.
@@ -76,7 +77,7 @@ public class DailyAlarmReceiver extends BroadcastReceiver{
         }
     }
 
-    private void cancelAlarm(Context context) {
+    public void cancelAlarm(Context context) {
         AlarmManager alarmManager = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(context, DailyAlarmReceiver.class);
         int requestCode = 101;

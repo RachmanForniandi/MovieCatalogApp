@@ -12,7 +12,7 @@ public class DailyAlarmPreference {
     private final String KEY_REPEATING_TIME = "repeatingTime";
     private final String KEY_REPEATING_MESSAGE= "repeatingMessage";
     private SharedPreferences sharedPreferences;
-    private  SharedPreferences.Editor editor;
+    private SharedPreferences.Editor editor;
 
     public DailyAlarmPreference(Context context){
         sharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);

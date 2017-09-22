@@ -8,7 +8,7 @@ import com.example.android.moviecatalogapp.model.movie.detail.DetailMovie;
 import com.example.android.moviecatalogapp.primary_ui.base.MvpPresenter;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
-import java.util.Observer;
+import io.reactivex.Observer;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;

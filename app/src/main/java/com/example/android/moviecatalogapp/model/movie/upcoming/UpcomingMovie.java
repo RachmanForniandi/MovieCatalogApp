@@ -9,17 +9,16 @@ import javax.annotation.Generated;
 
 @Generated("net.hexar.json2pojo")
 @SuppressWarnings("unused")
-
-public class UpComingMovie {
+public class UpcomingMovie {
 
     @SerializedName("dates")
-    private DatesUpComingMovie mDatesUpComingMovie;
+    private DatesUpcomingMovie mDatesUpcomingMovie;
 
     @SerializedName("page")
     private Long mPage;
 
     @SerializedName("results")
-    private List<ResultUpComingMovie> mResultUpComingMovies;
+    private List<ResultUpcomingMovie> mResultUpcomingMovies;
 
     @SerializedName("total_pages")
     private Long mTotalPages;
@@ -28,13 +27,12 @@ public class UpComingMovie {
     private Long mTotalResults;
 
 
-
-    public DatesUpComingMovie getDates() {
-        return mDatesUpComingMovie;
+    public DatesUpcomingMovie getDates() {
+        return mDatesUpcomingMovie;
     }
 
-    public void setDates(DatesUpComingMovie datesUpComingMovie) {
-        mDatesUpComingMovie = datesUpComingMovie;
+    public void setDates(DatesUpcomingMovie datesUpcomingMovie) {
+        mDatesUpcomingMovie = datesUpcomingMovie;
     }
 
     public Long getPage() {
@@ -45,12 +43,12 @@ public class UpComingMovie {
         mPage = page;
     }
 
-    public List<ResultUpComingMovie> getResults() {
-        return mResultUpComingMovies;
+    public List<ResultUpcomingMovie> getResults() {
+        return mResultUpcomingMovies;
     }
 
-    public void setResults(List<ResultUpComingMovie> resultUpComingMovies) {
-        mResultUpComingMovies = resultUpComingMovies;
+    public void setResults(List<ResultUpcomingMovie> resultUpcomingMovies) {
+        mResultUpcomingMovies = resultUpcomingMovies;
     }
 
     public Long getTotalPages() {

@@ -4,9 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import javax.annotation.Generated;
 
-/**
- * Created by Lenovo on 9/21/2017.
- */
+
 @Generated("net.hexar.json2pojo")
 @SuppressWarnings("unused")
 public class ProductionCountry {
@@ -16,6 +14,7 @@ public class ProductionCountry {
 
     @SerializedName("name")
     private String mName;
+
 
     public String getIso31661() {
         return mIso31661;

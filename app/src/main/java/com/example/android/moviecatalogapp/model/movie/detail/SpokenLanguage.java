@@ -8,11 +8,13 @@ import javax.annotation.Generated;
 @Generated("net.hexar.json2pojo")
 @SuppressWarnings("unused")
 public class SpokenLanguage {
+
     @SerializedName("iso_639_1")
     private String mIso6391;
 
     @SerializedName("name")
     private String mName;
+
 
     public String getIso6391() {
         return mIso6391;
