@@ -9,7 +9,6 @@ import com.example.android.moviecatalogapp.primary_ui.base.MvpPresenter;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 import io.reactivex.Observer;
-
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
@@ -17,9 +16,6 @@ import io.reactivex.schedulers.Schedulers;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-/**
- * Created by Lenovo on 9/21/2017.
- */
 
 public class DetailMoviePresenter implements MvpPresenter<DetailMovieView>{
     private final String TAG = getClass().getSimpleName();
@@ -44,17 +40,18 @@ public class DetailMoviePresenter implements MvpPresenter<DetailMovieView>{
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
         MovieDbApiService movieDbApiService = retrofit.create(MovieDbApiService.class);
-        movieDbApiService.getDetailMovie(
-                String.valueOf(idMovie),
-                BuildConfig.API_KEY,
-                BuildConfig.LANGUAGE
-            )
+        movieDbApiService
+                .getDetailMovie(
+                        String.valueOf(idMovie),
+                        BuildConfig.API_KEY,
+                        BuildConfig.LANGUAGE
+                )
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<DetailMovie>(){
                     @Override
                     public void onSubscribe(@NonNull Disposable d){
-
+                        /* not yet */
                     }
 
                     @Override
@@ -63,7 +60,7 @@ public class DetailMoviePresenter implements MvpPresenter<DetailMovieView>{
                     }
 
                     @Override
-                    public  void onError(@NonNull Throwable e){
+                    public void onError(@NonNull Throwable e){
                         e.printStackTrace();
                         Log.d(TAG, "onLoadData onError: " + e.getMessage());
                         detailMovieView.loadDataFailed();
@@ -75,4 +72,4 @@ public class DetailMoviePresenter implements MvpPresenter<DetailMovieView>{
                     }
                 });
         }
-}
+    }

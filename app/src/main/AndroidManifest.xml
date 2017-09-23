@@ -16,11 +16,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".primary_ui.activities.details.DetailMovieActivity"
+            android:theme="@style/AppTheme" />
 
-        <activity android:name=".primary_ui.activities.details.DetailMovieActivity"
-            android:theme="@style/AppTheme"/>
-
-        <service android:name=".feature.alarm_reminder.upcoming.UpcomingMoviesJobService"
+        <service
+            android:name=".feature.alarm_reminder.upcoming.UpcomingMoviesJobService"
             android:exported="true"
             android:permission="com.google.android.gms.permission.BIND_NETWORK_TASK_SERVICE">
             <intent-filter>
@@ -28,8 +29,10 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".primary_ui.activities.settings.SettingsActivity"
-            android:theme="@style/AppTheme"/>
+        <activity
+            android:name=".primary_ui.activities.settings.SettingsActivity"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".primary_ui.activities.alarm_reminder.dailies.DailyReminderActivity"></activity>
     </application>
 
 </manifest>

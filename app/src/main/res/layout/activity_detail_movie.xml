@@ -41,4 +41,5 @@
         android:id="@+id/tv_overview_detail_movie"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
 </LinearLayout>
