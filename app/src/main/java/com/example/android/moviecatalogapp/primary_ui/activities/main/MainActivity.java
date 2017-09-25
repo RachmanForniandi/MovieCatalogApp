@@ -1,16 +1,17 @@
 package com.example.android.moviecatalogapp.primary_ui.activities.main;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.NavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.android.moviecatalogapp.R;
+import com.example.android.moviecatalogapp.primary_ui.activities.alarm_reminder.dailies.DailyReminderActivity;
 import com.example.android.moviecatalogapp.primary_ui.fragments.search.SearchMovieFragment;
 
-public class MainActivity extends AppCompatActivity implements MainView, NavigationView.OnNavigationItemSelectedListener{
+public class MainActivity extends AppCompatActivity implements MainView{
 
     private final String TAG = getClass().getSimpleName();
     private MainPresenter mainPresenter;
@@ -29,9 +30,10 @@ public class MainActivity extends AppCompatActivity implements MainView, Navigat
         mainPresenter.onLoadData(this);
     }
 
+
     private void loadView() {
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fr_layout_container_content_activity_main, new SearchMovieFragment())
+                .replace(R.id.fr_layout_container_content_main, new SearchMovieFragment())
                 .commit();
     }
 
@@ -51,17 +53,28 @@ public class MainActivity extends AppCompatActivity implements MainView, Navigat
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
-        return super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.menu_main_activity, menu);
+        return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        return super.onOptionsItemSelected(item);
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_item_daily_reminder_menu_activity:
+            startActivity(new Intent(this, DailyReminderActivity.class));
+            return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override
     public void loadData(){
         Log.d(TAG, "loadData Success");
     }
-
 }
+
+
+
+

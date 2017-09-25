@@ -21,7 +21,7 @@ public class ResultSearchMovie {
     private Boolean mVideo;
 
     @SerializedName("vote_average")
-    private Double mVoteAverage;
+    private Long mVoteAverage;
 
     @SerializedName("title")
     private String mTitle;
@@ -53,6 +53,7 @@ public class ResultSearchMovie {
     @SerializedName("release_date")
     private String mReleaseDate;
 
+
     public long getVoteCount() {
         return mVoteCount;
     }
@@ -77,11 +78,11 @@ public class ResultSearchMovie {
        mVideo = video;
     }
 
-    public Double getVoteAverage() {
+    public Long getVoteAverage() {
         return mVoteAverage;
     }
 
-    public void setVoteAverage(Double voteAverage) {
+    public void setVoteAverage(Long voteAverage) {
         mVoteAverage = voteAverage;
     }
 

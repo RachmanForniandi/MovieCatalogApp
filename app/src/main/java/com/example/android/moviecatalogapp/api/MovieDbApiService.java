@@ -1,6 +1,8 @@
 package com.example.android.moviecatalogapp.api;
 
+import com.example.android.moviecatalogapp.model.movie.detail.DetailMovie;
 import com.example.android.moviecatalogapp.model.movie.search.SearchMovie;
+import com.example.android.moviecatalogapp.model.movie.upcoming.UpcomingMovie;
 
 import io.reactivex.Observable;
 
@@ -23,7 +25,7 @@ public interface MovieDbApiService {
     );
 
     @GET("movie/{MovieId}")
-    void getDetailMovie(
+    Observable<DetailMovie> getDetailMovie(
             @Path("MovieId") String movieId,
             @Query("api_key") String apiKey,
             @Query("language") String language
@@ -31,7 +33,7 @@ public interface MovieDbApiService {
 
 
     @GET("movie/upcoming")
-    void getUpcomingMovie(
+    Observable<UpcomingMovie> getUpcomingMovie(
             @Query("api_key") String apiKey,
             @Query("language") String language
     );

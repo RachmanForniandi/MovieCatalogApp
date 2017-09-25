@@ -1,17 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drw_layout_activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start"
     tools:context="com.example.android.moviecatalogapp.primary_ui.activities.main.MainActivity">
 
-    <FrameLayout
-        android:id="@+id/fr_layout_container_content_activity_main"
+    <include
+        layout="@layout/app_bar_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
+    <!--<android.support.design.widget.NavigationView
+        android:id="@+id/nv_activity_main"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:menu="@menu/main_menu_activity_main_nav">&ndash;&gt;-->
 
+        <FrameLayout
+            android:id="@+id/fr_layout_container_content_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
-</RelativeLayout>
+</android.support.v4.widget.DrawerLayout>

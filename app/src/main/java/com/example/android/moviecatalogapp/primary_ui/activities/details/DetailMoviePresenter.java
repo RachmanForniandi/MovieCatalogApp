@@ -17,22 +17,23 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 
-public class DetailMoviePresenter implements MvpPresenter<DetailMovieView>{
+public class DetailMoviePresenter implements MvpPresenter<DetailMovieView> {
+
     private final String TAG = getClass().getSimpleName();
     private DetailMovieView detailMovieView;
     private DetailMovie detailMovie;
 
     @Override
-    public void onAttach(DetailMovieView mvpView){
+    public void onAttach(DetailMovieView mvpView) {
         detailMovieView = mvpView;
     }
 
     @Override
-    public void onDetach(){
+    public void onDetach() {
 
     }
 
-    void onLoadData(long idMovie){
+    void onLoadData(long idMovie) {
         detailMovie = new DetailMovie();
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BuildConfig.BASE_URL)
@@ -48,28 +49,31 @@ public class DetailMoviePresenter implements MvpPresenter<DetailMovieView>{
                 )
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<DetailMovie>(){
+                .subscribe(new Observer<DetailMovie>() {
                     @Override
-                    public void onSubscribe(@NonNull Disposable d){
-                        /* not yet */
+                    public void onSubscribe(@NonNull Disposable d) {
+                        /** nothing to do in here */
                     }
 
                     @Override
-                    public void onNext(@NonNull DetailMovie detailMovie){
+                    public void onNext(@NonNull DetailMovie detailMovie) {
                         DetailMoviePresenter.this.detailMovie = detailMovie;
                     }
 
                     @Override
-                    public void onError(@NonNull Throwable e){
+                    public void onError(@NonNull Throwable e) {
                         e.printStackTrace();
                         Log.d(TAG, "onLoadData onError: " + e.getMessage());
                         detailMovieView.loadDataFailed();
                     }
 
                     @Override
-                    public void onComplete(){
+                    public void onComplete() {
                         detailMovieView.loadData(detailMovie);
                     }
                 });
-        }
     }
+}
+
+
+

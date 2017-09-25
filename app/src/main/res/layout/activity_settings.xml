@@ -98,18 +98,18 @@
 
     </RelativeLayout>
 
-    <TextView
+<!--    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/settings"
         android:textColor="@color/colorAccent"
-        android:layout_marginTop="24dp"/>
+        android:layout_marginTop="24dp"/>-->
 
     <RelativeLayout
         android:id="@+id/relative_layout_container_settings_locale"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_vertical_margin">
+        android:layout_marginTop="@dimen/activity_vertical_margin"/>
 
-    </RelativeLayout>
+
 </LinearLayout>

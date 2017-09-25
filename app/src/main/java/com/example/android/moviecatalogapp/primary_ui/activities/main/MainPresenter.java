@@ -19,6 +19,7 @@ import java.util.Locale;
  */
 
 public class MainPresenter implements MvpPresenter<MainView>{
+
     private final String TAG = getClass().getSimpleName();
     private MainView mainView;
 

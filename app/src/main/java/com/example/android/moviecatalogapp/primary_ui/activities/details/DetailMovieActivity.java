@@ -35,9 +35,6 @@ public class DetailMovieActivity extends AppCompatActivity implements DetailMovi
         onLoadData();
     }
 
-
-
-
     private void initViews() {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         imgViewPosterDetailMovie = (ImageView)findViewById(R.id.img_view_poster_item_detail_movie);

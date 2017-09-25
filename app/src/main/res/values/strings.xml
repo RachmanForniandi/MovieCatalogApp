@@ -26,4 +26,8 @@
     <string name="turn_on_off_daily_reminder">Turn on/off daily reminder</string>
     <string name="upcoming_reminder_notification">Upcoming Reminder Notification</string>
     <string name="turn_on_off_upcoming_reminder">Turn on/off upcoming reminder</string>
+    <string name="nav_draw_open">Open Navigation Drawer</string>
+    <string name="nav_draw_close">Close Navigation Drawer</string>
+    <string name="user_name">Rachman Forniandi</string>
+    <string name="email">RachmanForniandi@gmail.com</string>
 </resources>

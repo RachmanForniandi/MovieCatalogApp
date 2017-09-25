@@ -7,14 +7,15 @@ import com.example.android.moviecatalogapp.BuildConfig;
 import com.example.android.moviecatalogapp.api.MovieDbApiService;
 import com.example.android.moviecatalogapp.model.movie.search.ResultSearchMovie;
 import com.example.android.moviecatalogapp.model.movie.search.SearchMovie;
-import com.example.android.moviecatalogapp.primary_ui.base.MvpPresenter;
 import com.example.android.moviecatalogapp.primary_ui.activities.details.DetailMovieActivity;
+import com.example.android.moviecatalogapp.primary_ui.base.MvpPresenter;
 import com.example.android.moviecatalogapp.primary_ui.fragments.search.adapter.AdapterSearchMovie;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
@@ -58,7 +59,7 @@ public class SearchMoviePresenter implements MvpPresenter<SearchMovieView> {
         movieDbApiService.searchMovie(BuildConfig.API_KEY, BuildConfig.LANGUAGE, keyword)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new io.reactivex.Observer<SearchMovie>(){
+                .subscribe(new Observer<SearchMovie>(){
                     @Override
                     public void onSubscribe(@NonNull Disposable d){
 
