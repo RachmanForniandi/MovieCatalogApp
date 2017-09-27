@@ -21,8 +21,8 @@ public class DetailMovieActivity extends AppCompatActivity implements DetailMovi
     private DetailMoviePresenter detailMoviePresenter;
 
     private ImageView imgViewPosterDetailMovie;
-    private TextView tViewTitleDetailmovie;
-    private TextView tvOverviewDetailMovie;
+    private TextView tViewTitleDetailMovie;
+    private TextView tVoverviewDetailMovie;
     private ProgressDialog progressDialog;
 
     @Override
@@ -38,8 +38,8 @@ public class DetailMovieActivity extends AppCompatActivity implements DetailMovi
     private void initViews() {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         imgViewPosterDetailMovie = (ImageView)findViewById(R.id.img_view_poster_item_detail_movie);
-        tViewTitleDetailmovie = (TextView)findViewById(R.id.tv_title_item_detail_movie);
-        tvOverviewDetailMovie = (TextView)findViewById(R.id.tv_overview_detail_movie);
+        tViewTitleDetailMovie = (TextView)findViewById(R.id.tv_title_item_detail_movie);
+        tVoverviewDetailMovie = (TextView)findViewById(R.id.tv_overview_detail_movie);
     }
 
     @Override
@@ -87,10 +87,10 @@ public class DetailMovieActivity extends AppCompatActivity implements DetailMovi
     @Override
     public void loadData(DetailMovie detailMovie){
         progressDialog.dismiss();
-        tViewTitleDetailmovie.setText(detailMovie.getOriginalTitle());
-        tvOverviewDetailMovie.setText(detailMovie.getOverview());
+        tViewTitleDetailMovie.setText(detailMovie.getOriginalTitle());
+        tVoverviewDetailMovie.setText(detailMovie.getOverview());
         Glide.with(this)
-                .load(BuildConfig.BASE_URL_IMAGE +""+detailMovie.getPosterPath())
+                .load(BuildConfig.BASE_URL_IMAGE + "" +detailMovie.getPosterPath())
                 .placeholder(R.drawable.ic_image_black_24dp)
                 .error(R.drawable.ic_broken_image_black_24dp)
                 .into(imgViewPosterDetailMovie);

@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
  */
 
 public class DailyAlarmPreference {
+
     private final String PREF_NAME = "DailyAlarmPreference";
     private final String KEY_REPEATING_TIME = "repeatingTime";
     private final String KEY_REPEATING_MESSAGE= "repeatingMessage";

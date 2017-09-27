@@ -106,8 +106,8 @@ public class DailyReminderActivity extends AppCompatActivity implements DailyRem
                                 );
                             }
                         },
-                        calendar.get(calendar.HOUR_OF_DAY),
-                        calendar.get(calendar.MINUTE),
+                        calendar.get(Calendar.HOUR_OF_DAY),
+                        calendar.get(Calendar.MINUTE),
                         true
                 );
                 timePickerDialog.show();

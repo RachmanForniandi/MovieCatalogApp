@@ -1,7 +1,6 @@
 package com.example.android.moviecatalogapp.primary_ui.fragments.search;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,33 +10,27 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.android.moviecatalogapp.R;
 import com.example.android.moviecatalogapp.primary_ui.fragments.search.adapter.AdapterSearchMovie;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 
-
-public class SearchMovieFragment extends Fragment implements SearchMovieView{
+public class SearchMovieFragment extends Fragment implements SearchMovieView, View.OnClickListener{
 
     private final String TAG = getClass().getSimpleName();
     private SearchMoviePresenter searchMoviePresenter;
 
-    @BindView(R.id.et_keyword_search_movie_fragment)
-    EditText eTKeywordSearchMovieFragment;
-    @BindView(R.id.rcView_search_movie_fragment)
-    RecyclerView rcViewSearchMovieFragment;
-
+    private EditText etKeywordSearchMovieFragment;
+    private Button btnSearchMovieFragment;
+    private RecyclerView recyclerViewSearchMovieFragment;
     private ProgressDialog progressDialog;
     private View view;
-    private Context context;
 
     public SearchMovieFragment() {
-        // Required empty public constructor
+        // not yet
     }
 
     @Override
@@ -45,10 +38,10 @@ public class SearchMovieFragment extends Fragment implements SearchMovieView{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_search_movie, container, false);
-        ButterKnife.bind(this, view);
+        initViews(view);
+        initListener();
         initPresenter();
         onAttachView();
-        doLoadData();
         return view;
     }
 
@@ -56,27 +49,18 @@ public class SearchMovieFragment extends Fragment implements SearchMovieView{
         searchMoviePresenter = new SearchMoviePresenter();
     }
 
-    public void doLoadData() {
-        if (context != null) {
-            context = getActivity();
-        }
-        rcViewSearchMovieFragment.setLayoutManager(new LinearLayoutManager(context));
-        rcViewSearchMovieFragment.addItemDecoration(
-                new DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
-        );
+    private void initListener(){
+        btnSearchMovieFragment.setOnClickListener(this);
     }
-    @OnClick(R.id.btn_search_movie_fragment)
-    public void onClick(){
-        String keyword = eTKeywordSearchMovieFragment.getText().toString().trim();
-        if (keyword.isEmpty()){
-            Toast.makeText(
-                    context,
-                    getString(R.string.keyword_validation_message),
-                    Toast.LENGTH_SHORT).show();
-        }else {
-            initProgressDialog();
-            searchMoviePresenter.onSearchMovie(context, keyword);
-        }
+
+    public void initViews(View view) {
+        etKeywordSearchMovieFragment = (EditText)view.findViewById(R.id.et_keyword_search_movie_fragment);
+        btnSearchMovieFragment = (Button)view.findViewById(R.id.btn_search_movie_fragment);
+        recyclerViewSearchMovieFragment =(RecyclerView)view.findViewById(R.id.rcView_search_movie_fragment);
+        recyclerViewSearchMovieFragment.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerViewSearchMovieFragment.addItemDecoration(
+                new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL)
+        );
     }
 
     @Override
@@ -89,9 +73,28 @@ public class SearchMovieFragment extends Fragment implements SearchMovieView{
         searchMoviePresenter.onDetach();
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.btn_search_movie_fragment:
+                String keyword = etKeywordSearchMovieFragment.getText().toString().trim();
+                if (keyword.isEmpty()){
+                    Toast.makeText(
+                            getContext(),
+                            getString(R.string.keyword_validation_message),
+                            Toast.LENGTH_SHORT
+                    ).show();
+                }else {
+                    initProgressDialog();
+                    searchMoviePresenter.onSearchMovie(getContext(), keyword);
+                }
+                break;
+        }
+
+    }
     private void initProgressDialog() {
         if (progressDialog == null){
-            progressDialog = new ProgressDialog(context);
+            progressDialog = new ProgressDialog(getContext());
         }
         progressDialog.setMessage("Loading...Please wait");
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
@@ -102,7 +105,7 @@ public class SearchMovieFragment extends Fragment implements SearchMovieView{
     @Override
     public void searchMovie(AdapterSearchMovie adapterSearchMovie){
         dismissProgressDialog();
-        rcViewSearchMovieFragment.setAdapter(adapterSearchMovie);
+        recyclerViewSearchMovieFragment.setAdapter(adapterSearchMovie);
     }
 
     private void dismissProgressDialog() {
@@ -119,4 +122,6 @@ public class SearchMovieFragment extends Fragment implements SearchMovieView{
     public void onClickItem(Intent intentDetailMovieActivity){
         startActivity(intentDetailMovieActivity);
     }
+
+
 }

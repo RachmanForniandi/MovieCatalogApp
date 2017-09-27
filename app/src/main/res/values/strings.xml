@@ -7,6 +7,7 @@
     <string name="overview_movie">Overview Movie</string>
     <string name="release_date">Release Date</string>
     <string name="daily_reminder">Daily Reminder</string>
+    <string name="upcoming_reminder">Upcoming Reminder</string>
     <string name="message_daily_reminder">Hey, Check it out !</string>
     <string name="now_playing">Now Playing</string>
     <string name="upcoming">Upcoming</string>
@@ -30,4 +31,5 @@
     <string name="nav_draw_close">Close Navigation Drawer</string>
     <string name="user_name">Rachman Forniandi</string>
     <string name="email">RachmanForniandi@gmail.com</string>
+    <string name="activity_detail">Activity_Detail</string>
 </resources>

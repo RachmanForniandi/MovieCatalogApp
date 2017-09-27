@@ -6,8 +6,6 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import java.text.SimpleDateFormat;
-import android.icu.util.Calendar;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
@@ -17,6 +15,8 @@ import android.widget.Toast;
 
 import com.example.android.moviecatalogapp.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Locale;
 
 
@@ -42,7 +42,8 @@ public class DailyAlarmReceiver extends BroadcastReceiver{
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
                 .setSmallIcon(R.drawable.ic_access_alarm_black_24dp)
                 .setContentTitle(title)
-                .setColor(ContextCompat.getColor(context, android.R.color.transparent))
+                .setContentText("Hi User, Have a nice day ! :D")
+                .setColor(ContextCompat.getColor(context, android.R.color.holo_orange_light))
                 .setVibrate(new long[]{900,900,900,900})
                 .setSound(alarmSound);
         notificationManagerCompat.notify(notifId, builder.build());
@@ -60,21 +61,25 @@ public class DailyAlarmReceiver extends BroadcastReceiver{
         Log.d(TAG, "repeating time: " + new SimpleDateFormat("HH:mm", Locale.US)
                 .format(calendar.getTime())
         );
+
         PendingIntent pendingIntent = PendingIntent.getBroadcast(
                 context,
                 101,
                 intent,
                 0
         );
+
         alarmManager.setInexactRepeating(
                 AlarmManager.RTC_WAKEUP,
                 calendar.getTimeInMillis(),
                 AlarmManager.INTERVAL_DAY,
                 pendingIntent
         );
+
         if (isShowToast){
             Toast.makeText(context,"Repeating alarm set up", Toast.LENGTH_SHORT).show();
         }
+
     }
 
     public void cancelAlarm(Context context) {

@@ -12,16 +12,16 @@ import java.util.List;
 public class ResultSearchMovie {
 
     @SerializedName("vote_count")
-    private long mVoteCount;
+    private Long mVoteCount;
 
     @SerializedName("id")
-    private long mId;
+    private Long mId;
 
     @SerializedName("video")
     private Boolean mVideo;
 
     @SerializedName("vote_average")
-    private Long mVoteAverage;
+    private double mVoteAverage;
 
     @SerializedName("title")
     private String mTitle;
@@ -54,19 +54,19 @@ public class ResultSearchMovie {
     private String mReleaseDate;
 
 
-    public long getVoteCount() {
+    public Long getVoteCount() {
         return mVoteCount;
     }
 
-    public void setVoteCount(long voteCount) {
+    public void setVoteCount(Long voteCount) {
         mVoteCount = voteCount;
     }
 
-    public long getId() {
+    public Long getId() {
         return mId;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         mId = id;
     }
 
@@ -78,11 +78,11 @@ public class ResultSearchMovie {
        mVideo = video;
     }
 
-    public Long getVoteAverage() {
+    public Double getVoteAverage() {
         return mVoteAverage;
     }
 
-    public void setVoteAverage(Long voteAverage) {
+    public void setVoteAverage(Double voteAverage) {
         mVoteAverage = voteAverage;
     }
 

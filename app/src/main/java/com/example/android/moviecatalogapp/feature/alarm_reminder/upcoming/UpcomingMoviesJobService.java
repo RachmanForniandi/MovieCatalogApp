@@ -126,9 +126,9 @@ public class UpcomingMoviesJobService extends GcmTaskService{
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
                 .setContentTitle(originalTitle)
                 .setSmallIcon(R.drawable.ic_access_alarm_black_24dp)
-                .setContentText("Hari ini " + originalTitle + "release")
+                .setContentText("Hari ini " + originalTitle + " release")
                 .setContentIntent(pendingIntentDetailMovieActivity)
-                .setColor(ContextCompat.getColor(context, android.R.color.white))
+                .setColor(ContextCompat.getColor(context, android.R.color.holo_blue_light))
                 .setVibrate(new long[]{900, 900, 900, 900})
                 .setSound(alarmSound);
         notificationManagerCompat.notify(notifId, builder.build());
