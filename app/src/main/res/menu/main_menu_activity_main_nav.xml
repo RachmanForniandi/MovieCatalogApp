@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_option_menu_now_playing_at_nav_draw"
+        android:title="@string/now_playing"/>
+    <item
+        android:id="@+id/nav_option_menu_upcoming_at_nav_draw"
+        android:title="@string/upcoming"/>
+    <!--<item
+        android:id="@+id/nav_option_menu_search_at_nav_draw"
+        android:title="@string/search"/>
+    <item
+        android:id="@+id/nav_option_menu_setting_at_nav_draw"
+        android:title="@string/settings"/>-->
+</menu>
