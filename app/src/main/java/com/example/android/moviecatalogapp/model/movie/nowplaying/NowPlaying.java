@@ -19,7 +19,7 @@ public class NowPlaying {
     private Long mPage;
 
     @SerializedName("results")
-    private List<ResultNowPlaying> mResultNowPlaying;
+    private List<ResultNowPlaying> mResultNowPlayings;
 
     @SerializedName("total_pages")
     private Long mTotalPages;
@@ -45,12 +45,12 @@ public class NowPlaying {
         mPage = page;
     }
 
-    public List<ResultNowPlaying> getResultNowPlaying() {
-        return mResultNowPlaying;
+    public List<ResultNowPlaying> getResults() {
+        return mResultNowPlayings;
     }
 
-    public void setResultNowPlaying(List<ResultNowPlaying> resultNowPlaying) {
-        mResultNowPlaying = resultNowPlaying;
+    public void setResults(List<ResultNowPlaying> resultNowPlayings) {
+        mResultNowPlayings = resultNowPlayings;
     }
 
     public Long getTotalPages() {

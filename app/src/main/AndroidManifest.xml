@@ -23,7 +23,8 @@
             android:enabled="true"
             android:exported="true"/>
 
-        <activity android:name=".primary_ui.activities.details.DetailMovieActivity" />
+        <activity android:name=".primary_ui.activities.details.DetailMovieActivity"
+            android:theme="@style/AppTheme"/>
 
         <service
             android:name=".feature.alarm_reminder.upcoming.UpcomingMoviesJobService"

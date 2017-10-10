@@ -20,7 +20,7 @@ public class Dates {
         return mMaximum;
     }
 
-    public void setmMaximum(String maximum) {
+    public void setMaximum(String maximum) {
         mMaximum = maximum;
     }
 

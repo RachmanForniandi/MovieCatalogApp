@@ -63,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements MainView, Navigat
                 tabLayout.newTab().setText(getString(R.string.upcoming))
         );
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 Fragment fragmentSelected = null;
@@ -99,6 +100,7 @@ public class MainActivity extends AppCompatActivity implements MainView, Navigat
     }
 
 
+    /** later */
     private void loadView() {
         /*getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fr_layout_container_content_main, new SearchMovieFragment())
@@ -137,6 +139,7 @@ public class MainActivity extends AppCompatActivity implements MainView, Navigat
         return super.onOptionsItemSelected(item);
     }
 
+    /** later */
     @Override
     public void loadData(){
         Log.d(TAG, "loadData Success");
