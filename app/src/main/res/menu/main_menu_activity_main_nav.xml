@@ -6,10 +6,10 @@
     <item
         android:id="@+id/nav_option_menu_upcoming_at_nav_draw"
         android:title="@string/upcoming"/>
-    <!--<item
+    <item
         android:id="@+id/nav_option_menu_search_at_nav_draw"
         android:title="@string/search"/>
     <item
         android:id="@+id/nav_option_menu_setting_at_nav_draw"
-        android:title="@string/settings"/>-->
+        android:title="@string/settings"/>
 </menu>

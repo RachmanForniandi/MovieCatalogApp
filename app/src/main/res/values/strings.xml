@@ -31,6 +31,6 @@
     <string name="nav_draw_close">Close Navigation Drawer</string>
     <string name="user_name">Rachman Forniandi</string>
     <string name="email">RachmanForniandi@gmail.com</string>
-    <string name="activity_detail">Activity_Detail</string>
-    <string name="image_view_add_fav">image view add favorite</string>
+    <string name="setting_locale">setting locale language</string>
+    <string name="change_your_locale">change your locale language here</string>
 </resources>

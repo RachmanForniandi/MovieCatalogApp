@@ -45,7 +45,7 @@
             android:ellipsize="end"/>
 
         <TextView
-            android:id="@+id/tv_date_item_movie_search"
+            android:id="@+id/tv_date_release_item_movie_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"

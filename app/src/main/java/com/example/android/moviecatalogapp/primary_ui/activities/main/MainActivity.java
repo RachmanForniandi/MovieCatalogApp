@@ -1,5 +1,6 @@
 package com.example.android.moviecatalogapp.primary_ui.activities.main;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -16,42 +17,55 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.android.moviecatalogapp.R;
+import com.example.android.moviecatalogapp.primary_ui.activities.settings.SettingsActivity;
 import com.example.android.moviecatalogapp.primary_ui.fragments.nowplaying.NowPlayingFragment;
+import com.example.android.moviecatalogapp.primary_ui.fragments.search.SearchMovieFragment;
 import com.example.android.moviecatalogapp.primary_ui.fragments.upcoming.UpcomingMovieFragment;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements MainView, NavigationView.OnNavigationItemSelectedListener{
 
     private final String TAG = getClass().getSimpleName();
     private MainPresenter mainPresenter;
 
+    @BindView(R.id.toolbar_app_main)
+    Toolbar toolbar;
+    @BindView(R.id.drawer_layout_activity_main)
+    DrawerLayout drawerLayout;
+    @BindView(R.id.nv_activity_main)
+    NavigationView navigationView;
+    @BindView(R.id.tab_layout_content_main)
+    TabLayout tabLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
         initPresenter();
         onAttachView();
         initViews();
-        /*loadView();
-        doLoadData();*/
+        doLoadData();
+        /*loadView();*/
     }
 
     private void initViews(){
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar_app_main);
         setSupportActionBar(toolbar);
 
-        DrawerLayout drwLayout = (DrawerLayout)findViewById(R.id.drawer_layout_activity_main);
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this,drwLayout,toolbar,
+                this,drawerLayout,toolbar,
                 R.string.nav_draw_open,
                 R.string.nav_draw_close
         );
-        drwLayout.addDrawerListener(toggle);
+        drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView)findViewById(R.id.nv_activity_main);
         navigationView.setNavigationItemSelectedListener(this);
 
-        TabLayout tabLayout = (TabLayout)findViewById(R.id.tab_layout_content_main);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fr_layout_content_main, new NowPlayingFragment())
                 .commit();
@@ -62,6 +76,10 @@ public class MainActivity extends AppCompatActivity implements MainView, Navigat
         tabLayout.addTab(
                 tabLayout.newTab().setText(getString(R.string.upcoming))
         );
+        tabLayout.addTab(
+                tabLayout.newTab().setText(getString(R.string.search))
+        );
+
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
 
             @Override
@@ -73,6 +91,9 @@ public class MainActivity extends AppCompatActivity implements MainView, Navigat
                         break;
                     case 1:
                         fragmentSelected = new UpcomingMovieFragment();
+                        break;
+                    case 2:
+                        fragmentSelected = new SearchMovieFragment();
                         break;
                 }
                 if (fragmentSelected != null){
@@ -152,10 +173,19 @@ public class MainActivity extends AppCompatActivity implements MainView, Navigat
         switch(item.getItemId()){
             case R.id.nav_option_menu_now_playing_at_nav_draw:
                 selectedItem = true;
+                tabLayout.getTabAt(0).select();
                 break;
             case R.id.nav_option_menu_upcoming_at_nav_draw:
                 selectedItem = true;
+                tabLayout.getTabAt(1).select();
                 break;
+            case R.id.nav_option_menu_search_at_nav_draw:
+                selectedItem = true;
+                tabLayout.getTabAt(2).select();
+                break;
+            case R.id.nav_option_menu_setting_at_nav_draw:
+                Intent intentSettingsActivity = new Intent(this, SettingsActivity.class);
+                startActivity(intentSettingsActivity);
         }
 
         DrawerLayout drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout_activity_main);

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MovieCatalogApp</string>
+    <string name="hello_blank_fragment">Hello fragmen kosong</string>
+    <string name="keyword_validation_message">Kata kunci hilang. Harap diisi untuk memulai pencarian film</string>
+    <string name="image_view_poster">poster tampilan gambar</string>
+    <string name="title_movie">Judul Film</string>
+    <string name="overview_movie">Rangkuman Film</string>
+    <string name="release_date">Tanggal Rilis</string>
+    <string name="daily_reminder">Pengingat Harian</string>
+    <string name="upcoming_reminder">Pengingat yang akan datang</string>
+    <string name="message_daily_reminder">Hei, Film hari ini adalah ....</string>
+    <string name="now_playing">Sedang Ditayangkan</string>
+    <string name="upcoming">Mendatang</string>
+    <string name="date">tanggal</string>
+    <string name="_02_09_2017">02-09-2017</string>
+    <string name="set_date">Atur Tanggal</string>
+    <string name="time">Waktu</string>
+    <string name="_13_30">13:30</string>
+    <string name="set_time">atur waktu</string>
+    <string name="save">Simpan</string>
+    <string name="detail">Detail</string>
+    <string name="share">Bagikan</string>
+    <string name="search">Cari</string>
+    <string name="settings">Pengaturan</string>
+    <string name="notification">Pemberitahuan</string>
+    <string name="daily_reminder_notification">Pemberitahuan Pengingat Harian</string>
+    <string name="turn_on_off_daily_reminder">Aktifkan/Nonaktifkan Pengingat Harian</string>
+    <string name="upcoming_reminder_notification">Pemberitahuan Pengingat Mendatang</string>
+    <string name="turn_on_off_upcoming_reminder">Aktifkan/Nonaktifkan Pengingat Mendatang</string>
+    <string name="nav_draw_open">Buka Laci Navigasi</string>
+    <string name="nav_draw_close">Tutup Laci Navigasi</string>
+    <string name="user_name">Rachman Forniandi</string>
+    <string name="email">RachmanForniandi@gmail.com</string>
+    <string name="setting_locale">Pengaturan Lokal</string>
+    <string name="change_your_locale">Ubah Bahasa Lokal Anda Disini</string>
+</resources>

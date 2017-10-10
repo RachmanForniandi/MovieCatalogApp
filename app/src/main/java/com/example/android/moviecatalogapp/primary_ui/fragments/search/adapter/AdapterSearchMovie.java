@@ -85,7 +85,7 @@ public class AdapterSearchMovie extends RecyclerView.Adapter<AdapterSearchMovie.
             imgViewPosterViewHolderSearchMovie = (ImageView) itemView.findViewById(R.id.img_view_poster_item_search_movie);
             txtViewTitleMovieViewHolderMovieSearch = (TextView) itemView.findViewById(R.id.tv_title_item_movie_search);
             txtViewDescriptionMovieViewHolderMovieSearch = (TextView) itemView.findViewById(R.id.tv_description_item_movie_search);
-            txtViewReleaseDateViewHolderMovieSearch = (TextView) itemView.findViewById(R.id.tv_date_item_movie_search);
+            txtViewReleaseDateViewHolderMovieSearch = (TextView) itemView.findViewById(R.id.tv_date_release_item_movie_search);
         }
     }
         public interface ListenerAdapterSearchMovie{
