@@ -12,7 +12,7 @@ interface NowPlayingView extends MvpView{
 
     void itemClickDetail(ResultNowPlaying resultNowPlaying);
 
-    void  itemClickShare(ResultNowPlaying resultNowPlaying);
+    void itemClickShare(ResultNowPlaying resultNowPlaying);
 
     void loadData(AdapterNowPlayingMovie adapterNowPlayingMovie);
 

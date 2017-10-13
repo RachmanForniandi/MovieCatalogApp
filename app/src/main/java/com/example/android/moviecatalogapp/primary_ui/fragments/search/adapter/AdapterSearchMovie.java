@@ -63,7 +63,6 @@ public class AdapterSearchMovie extends RecyclerView.Adapter<AdapterSearchMovie.
         notifyDataSetChanged();
     }
 
-
     class ViewHolderSearchMovie extends RecyclerView.ViewHolder{
 
         private ImageView imgViewPosterViewHolderSearchMovie;
@@ -75,6 +74,7 @@ public class AdapterSearchMovie extends RecyclerView.Adapter<AdapterSearchMovie.
             super(itemView);
             initViews(itemView);
             itemView.setOnClickListener(new View.OnClickListener() {
+
                 @Override
                 public void onClick(View view) {
                     listenerAdapterSearchMovie.onClick(listResultSearchMovies.get(getAdapterPosition()));
@@ -89,6 +89,7 @@ public class AdapterSearchMovie extends RecyclerView.Adapter<AdapterSearchMovie.
         }
     }
         public interface ListenerAdapterSearchMovie{
+
             void onClick(ResultSearchMovie resultSearchMovie);
         }
     }

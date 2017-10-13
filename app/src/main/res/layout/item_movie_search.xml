@@ -48,7 +48,6 @@
             android:id="@+id/tv_date_release_item_movie_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:text="@string/release_date"
             android:textSize="16sp"
             android:textColor="@android:color/darker_gray"

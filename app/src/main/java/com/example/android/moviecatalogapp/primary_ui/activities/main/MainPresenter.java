@@ -37,8 +37,8 @@ public class MainPresenter implements MvpPresenter<MainView>{
     void onLoadData(Context context){
        /* **utk settings configuration*/
         SettingsPreference settingsPreference = new SettingsPreference(context);
-        boolean isDailyRemiderNotificationActive = settingsPreference.getDailyReminderActive();
-        boolean isUpcomingRemiderNotificationActive = settingsPreference.getUpcomingReminderActive();
+        boolean isDailyReminderNotificationActive = settingsPreference.getDailyReminderActive();
+        boolean isUpcomingReminderNotificationActive = settingsPreference.getUpcomingReminderActive();
 
         /*utk Daily Reminder*/
         DailyAlarmPreference dailyAlarmPreference = new DailyAlarmPreference(context);
@@ -61,7 +61,7 @@ public class MainPresenter implements MvpPresenter<MainView>{
             time = dailyAlarmPreference.getRepeatingTime();
         }
 
-        if (isDailyRemiderNotificationActive){
+        if (isDailyReminderNotificationActive){
             DailyAlarmReceiver dailyAlarmReceiver = new DailyAlarmReceiver();
             dailyAlarmReceiver.setRepeatingAlarm(
                     context,
@@ -72,7 +72,7 @@ public class MainPresenter implements MvpPresenter<MainView>{
         }
 
         /*utk Upcoming Movies*/
-        if (isUpcomingRemiderNotificationActive){
+        if (isUpcomingReminderNotificationActive){
             SchedulerTask schedulerTask = new SchedulerTask(context);
             schedulerTask.createPeriodicTask();
         }

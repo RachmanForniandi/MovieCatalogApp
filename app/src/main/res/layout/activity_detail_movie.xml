@@ -19,6 +19,7 @@
             android:id="@+id/img_view_poster_item_detail_movie"
             android:layout_width="150dp"
             android:layout_height="200dp" />
+
         <TextView
             android:id="@+id/tv_title_item_detail_movie"
             android:layout_width="match_parent"

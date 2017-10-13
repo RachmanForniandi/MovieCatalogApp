@@ -53,12 +53,12 @@
 
     <TextView
         android:id="@+id/tv_date_release_item_movie_now_playing"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_toRightOf="@id/img_view_poster_item_search_movie"
-        android:layout_toEndOf="@id/img_view_poster_item_search_movie"
-        android:layout_below="@id/tv_description_item_movie_search"
+        android:layout_toRightOf="@id/img_view_poster_item_now_playing_movie"
+        android:layout_toEndOf="@id/img_view_poster_item_now_playing_movie"
+        android:layout_below="@id/tv_description_item_movie_now_playing"
         android:textSize="15sp"
         android:maxLines="2"/>
 

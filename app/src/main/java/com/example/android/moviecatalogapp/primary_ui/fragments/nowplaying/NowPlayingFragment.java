@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.android.moviecatalogapp.R;
@@ -25,8 +26,12 @@ import butterknife.ButterKnife;
  * A simple {@link Fragment} subclass.
  */
 public class NowPlayingFragment extends Fragment implements NowPlayingView{
+
     private final String TAG = getClass().getSimpleName();
     private NowPlayingPresenter nowPlayingPresenter;
+
+    @BindView(R.id.progressbar_loading_now_playing)
+    ProgressBar progressBarLoadingFragmentNowPlaying;
 
     @BindView(R.id.rcView_data_now_playing_fragment)
     RecyclerView recyclerViewDataFragmentNowPlaying;
@@ -50,6 +55,8 @@ public class NowPlayingFragment extends Fragment implements NowPlayingView{
     }
 
     private void doLoadData(){
+        progressBarLoadingFragmentNowPlaying.setVisibility(View.VISIBLE);
+        recyclerViewDataFragmentNowPlaying.setVisibility(View.GONE);
         nowPlayingPresenter.onLoadData(getContext());
     }
 
@@ -78,14 +85,17 @@ public class NowPlayingFragment extends Fragment implements NowPlayingView{
     public void itemClickShare(ResultNowPlaying resultNowPlaying) {
         Intent intentSharingMovie = new Intent(Intent.ACTION_SEND);
         intentSharingMovie.setType("text/plain");
-        String bodyMessage = "Upcoming Movie: " + resultNowPlaying.getTitle();
-        intentSharingMovie.putExtra(Intent.EXTRA_SUBJECT, "Upcoming Movie");
+        String bodyMessage = "Now Playing in Cinemas: " + resultNowPlaying.getTitle();
+        intentSharingMovie.putExtra(Intent.EXTRA_SUBJECT, "NowPlaying Movie");
         intentSharingMovie.putExtra(Intent.EXTRA_TEXT, bodyMessage);
         startActivity(intentSharingMovie);
     }
 
     @Override
     public void loadData(AdapterNowPlayingMovie adapterNowPlayingMovie) {
+        progressBarLoadingFragmentNowPlaying.setVisibility(View.GONE);
+        recyclerViewDataFragmentNowPlaying.setVisibility(View.VISIBLE);
+
         recyclerViewDataFragmentNowPlaying.setLayoutManager(new LinearLayoutManager(getContext()));
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL);
         recyclerViewDataFragmentNowPlaying.addItemDecoration(dividerItemDecoration);
@@ -95,6 +105,8 @@ public class NowPlayingFragment extends Fragment implements NowPlayingView{
 
     @Override
     public void loadDataFailed(String message) {
+        progressBarLoadingFragmentNowPlaying.setVisibility(View.GONE);
+        recyclerViewDataFragmentNowPlaying.setVisibility(View.VISIBLE);
         Toast.makeText(
              getContext(),message,
                 Toast.LENGTH_LONG

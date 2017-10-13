@@ -90,8 +90,8 @@ public class SearchMovieFragment extends Fragment implements SearchMovieView, Vi
                 }
                 break;
         }
-
     }
+
     private void initProgressDialog() {
         if (progressDialog == null){
             progressDialog = new ProgressDialog(getContext());
@@ -122,6 +122,4 @@ public class SearchMovieFragment extends Fragment implements SearchMovieView, Vi
     public void onClickItem(Intent intentDetailMovieActivity){
         startActivity(intentDetailMovieActivity);
     }
-
-
 }

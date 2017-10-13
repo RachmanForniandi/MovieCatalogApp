@@ -35,7 +35,7 @@ public class AdapterUpcomingMovie extends RecyclerView.Adapter<AdapterUpcomingMo
 
     @Override
     public ViewHolderItemUpcomingMovie onCreateViewHolder(ViewGroup parent, int viewType){
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_upcoming_movie,null);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_upcoming_movie, null);
         return new ViewHolderItemUpcomingMovie(view);
     }
 
@@ -60,10 +60,13 @@ public class AdapterUpcomingMovie extends RecyclerView.Adapter<AdapterUpcomingMo
     class ViewHolderItemUpcomingMovie extends RecyclerView.ViewHolder{
         @BindView(R.id.img_view_poster_item_upcoming_movie)
         ImageView imgViewPosterItemUpcomingMovie;
+
         @BindView(R.id.tv_title_item_movie_upcoming)
         TextView txtViewTitleItemUpcomingMovie;
+
         @BindView(R.id.tv_description_item_movie_upcoming)
         TextView txtViewDescriptionItemUpcomingMovie;
+
         @BindView(R.id.tv_date_release_item_movie_upcoming)
         TextView txtViewDateReleaseItemUpcomingMovie;
 

@@ -13,10 +13,10 @@ import javax.annotation.Generated;
 public class ResultNowPlaying {
 
     @SerializedName("vote_count")
-    private long mVoteCount;
+    private Long mVoteCount;
 
     @SerializedName("id")
-    private long mId;
+    private Long mId;
 
     @SerializedName("video")
     private Boolean mVideo;
@@ -54,19 +54,19 @@ public class ResultNowPlaying {
     @SerializedName("release_date")
     private String mReleaseDate;
 
-    public long getVoteCount() {
+    public Long getVoteCount() {
         return mVoteCount;
     }
 
-    public void setVoteCount(long voteCount) {
+    public void setVoteCount(Long voteCount) {
         mVoteCount = voteCount;
     }
 
-    public long getId() {
+    public Long getId() {
         return mId;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         mId = id;
     }
 

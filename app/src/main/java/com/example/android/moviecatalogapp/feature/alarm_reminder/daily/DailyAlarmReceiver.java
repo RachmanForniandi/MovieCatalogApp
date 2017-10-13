@@ -38,6 +38,7 @@ public class DailyAlarmReceiver extends BroadcastReceiver{
     private void showAlarmNotification(Context context, String title, String message, int notifId) {
         NotificationManager notificationManagerCompat = (NotificationManager)context.
                 getSystemService(Context.NOTIFICATION_SERVICE);
+
         Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
                 .setSmallIcon(R.drawable.ic_access_alarm_black_24dp)

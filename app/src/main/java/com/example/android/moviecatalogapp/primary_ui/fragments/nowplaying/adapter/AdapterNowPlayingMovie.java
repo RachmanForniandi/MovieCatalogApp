@@ -39,7 +39,7 @@ public class AdapterNowPlayingMovie extends RecyclerView.Adapter<AdapterNowPlayi
 
     @Override
     public ViewHolderNowPlayingMovie onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_now_playing, null);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_now_playing,null);
         return new ViewHolderNowPlayingMovie(view);
     }
 
@@ -80,7 +80,6 @@ public class AdapterNowPlayingMovie extends RecyclerView.Adapter<AdapterNowPlayi
                 R.id.btn_detail_item_now_playing_movie,
                 R.id.btn_share_item_now_playing_movie
         })
-
         public void onClick(View view){
             switch (view.getId()){
                 case R.id.btn_detail_item_now_playing_movie:

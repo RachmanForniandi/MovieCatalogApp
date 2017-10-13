@@ -20,8 +20,8 @@ public class SettingsPreference {
         editor = sharedPreferences.edit();
     }
 
-    public void setDailyReminderActive(boolean isDailyRemiderActive){
-        editor.putBoolean(KEY_DAILY_REMINDER_ACTIVE, isDailyRemiderActive);
+    public void setDailyReminderActive(boolean isDailyReminderActive){
+        editor.putBoolean(KEY_DAILY_REMINDER_ACTIVE, isDailyReminderActive);
         editor.commit();
     }
 

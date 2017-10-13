@@ -14,6 +14,7 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -45,7 +46,8 @@ public class NowPlayingPresenter implements MvpPresenter<NowPlayingView>{
                 .build();
         MovieDbApiService movieDbApiService = retrofit.create(MovieDbApiService.class);
         movieDbApiService.getNowPlayingMovie(BuildConfig.API_KEY, BuildConfig.LANGUAGE)
-                .subscribeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<NowPlaying>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {

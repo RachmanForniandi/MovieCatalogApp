@@ -22,7 +22,7 @@ public class DetailMovieActivity extends AppCompatActivity implements DetailMovi
 
     private ImageView imgViewPosterDetailMovie;
     private TextView tViewTitleDetailMovie;
-    private TextView tVoverviewDetailMovie;
+    private TextView tVOverviewDetailMovie;
     private ProgressDialog progressDialog;
 
     @Override
@@ -39,7 +39,7 @@ public class DetailMovieActivity extends AppCompatActivity implements DetailMovi
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         imgViewPosterDetailMovie = (ImageView)findViewById(R.id.img_view_poster_item_detail_movie);
         tViewTitleDetailMovie = (TextView)findViewById(R.id.tv_title_item_detail_movie);
-        tVoverviewDetailMovie = (TextView)findViewById(R.id.tv_overview_detail_movie);
+        tVOverviewDetailMovie = (TextView)findViewById(R.id.tv_overview_detail_movie);
     }
 
     @Override
@@ -88,7 +88,7 @@ public class DetailMovieActivity extends AppCompatActivity implements DetailMovi
     public void loadData(DetailMovie detailMovie){
         progressDialog.dismiss();
         tViewTitleDetailMovie.setText(detailMovie.getOriginalTitle());
-        tVoverviewDetailMovie.setText(detailMovie.getOverview());
+        tVOverviewDetailMovie.setText(detailMovie.getOverview());
         Glide.with(this)
                 .load(BuildConfig.BASE_URL_IMAGE + "" +detailMovie.getPosterPath())
                 .placeholder(R.drawable.ic_image_black_24dp)
