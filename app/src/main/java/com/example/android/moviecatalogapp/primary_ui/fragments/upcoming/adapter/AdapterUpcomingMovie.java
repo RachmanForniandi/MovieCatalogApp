@@ -21,6 +21,7 @@ import butterknife.OnClick;
 
 
 public class AdapterUpcomingMovie extends RecyclerView.Adapter<AdapterUpcomingMovie.ViewHolderItemUpcomingMovie>{
+    private final ViewGroup nullParent = null;
     private final String TAG = getClass().getSimpleName();
     private Context context;
     private List<ResultUpcomingMovie> resultUpcomingMovieList;
@@ -35,7 +36,7 @@ public class AdapterUpcomingMovie extends RecyclerView.Adapter<AdapterUpcomingMo
 
     @Override
     public ViewHolderItemUpcomingMovie onCreateViewHolder(ViewGroup parent, int viewType){
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_upcoming_movie, null);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_upcoming_movie, nullParent);
         return new ViewHolderItemUpcomingMovie(view);
     }
 

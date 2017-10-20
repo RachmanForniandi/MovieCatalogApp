@@ -54,6 +54,7 @@ public class ResultNowPlaying {
     @SerializedName("release_date")
     private String mReleaseDate;
 
+
     public Long getVoteCount() {
         return mVoteCount;
     }

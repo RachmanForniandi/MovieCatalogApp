@@ -21,7 +21,7 @@ import java.util.List;
  */
 
 public class AdapterSearchMovie extends RecyclerView.Adapter<AdapterSearchMovie.ViewHolderSearchMovie> {
-
+    private final ViewGroup nullParent = null;
     private final String TAG = getClass().getSimpleName();
     private Context context;
     private List<ResultSearchMovie> listResultSearchMovies;
@@ -36,7 +36,7 @@ public class AdapterSearchMovie extends RecyclerView.Adapter<AdapterSearchMovie.
 
     @Override
     public ViewHolderSearchMovie onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_movie_search, null);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_movie_search, nullParent);
         return new ViewHolderSearchMovie(view);
     }
 

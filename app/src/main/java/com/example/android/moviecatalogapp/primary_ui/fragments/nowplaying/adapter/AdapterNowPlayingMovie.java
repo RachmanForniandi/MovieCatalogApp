@@ -24,6 +24,7 @@ import butterknife.OnClick;
  */
 
 public class AdapterNowPlayingMovie extends RecyclerView.Adapter<AdapterNowPlayingMovie.ViewHolderNowPlayingMovie>{
+    private final ViewGroup nullParent = null;
     private final String TAG = getClass().getSimpleName();
     private Context context;
     private List<ResultNowPlaying> resultNowPlayingList;
@@ -39,7 +40,7 @@ public class AdapterNowPlayingMovie extends RecyclerView.Adapter<AdapterNowPlayi
 
     @Override
     public ViewHolderNowPlayingMovie onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_now_playing,null);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_now_playing, nullParent);
         return new ViewHolderNowPlayingMovie(view);
     }
 
@@ -64,10 +65,13 @@ public class AdapterNowPlayingMovie extends RecyclerView.Adapter<AdapterNowPlayi
     class ViewHolderNowPlayingMovie extends RecyclerView.ViewHolder{
         @BindView(R.id.img_view_poster_item_now_playing_movie)
         ImageView imgViewPosterItemNowPlaying;
+
         @BindView(R.id.tv_title_item_movie_now_playing)
         TextView txtViewTitleMovieNowPlaying;
+
         @BindView(R.id.tv_description_item_movie_now_playing)
         TextView txtViewDescriptionItemMovieNowPlaying;
+
         @BindView(R.id.tv_date_release_item_movie_now_playing)
         TextView txtViewDateReleaseItemMovieNowPlaying;
 

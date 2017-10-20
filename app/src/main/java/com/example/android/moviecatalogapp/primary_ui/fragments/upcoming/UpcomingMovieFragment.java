@@ -29,6 +29,8 @@ public class UpcomingMovieFragment extends Fragment implements UpcomingMovieView
 
     private final String TAG = getClass().getSimpleName();
     private UpcomingMoviePresenter upcomingMoviePresenter;
+    private static String STATE_RESULT = "state_result";
+    private String mChecked;
 
     @BindView(R.id.pb_loading_fragment_upcoming_movie)
     ProgressBar progressBarLoadingFragmentUpcomingMovie;
@@ -51,15 +53,13 @@ public class UpcomingMovieFragment extends Fragment implements UpcomingMovieView
         initPresenter();
         onAttachView();
         doLoadData();
+
+        if (savedInstanceState != null){
+            mChecked = savedInstanceState.getString(STATE_RESULT);
+        }
         return viewRoot;
     }
 
-    private void doLoadData() {
-        progressBarLoadingFragmentUpcomingMovie.setVisibility(View.VISIBLE);
-        recyclerViewDataFragmentUpcomingMovie.setVisibility(View.GONE);
-        upcomingMoviePresenter.onLoadData(getContext());
-
-    }
     private void initPresenter() {
         upcomingMoviePresenter = new UpcomingMoviePresenter();
     }
@@ -72,6 +72,12 @@ public class UpcomingMovieFragment extends Fragment implements UpcomingMovieView
     @Override
     public void onDetachView(){
         upcomingMoviePresenter.onDetach();
+    }
+
+    private void doLoadData() {
+        progressBarLoadingFragmentUpcomingMovie.setVisibility(View.VISIBLE);
+        recyclerViewDataFragmentUpcomingMovie.setVisibility(View.GONE);
+        upcomingMoviePresenter.onLoadData(getContext());
     }
 
     @Override
@@ -97,7 +103,7 @@ public class UpcomingMovieFragment extends Fragment implements UpcomingMovieView
         recyclerViewDataFragmentUpcomingMovie.setVisibility(View.VISIBLE);
 
         recyclerViewDataFragmentUpcomingMovie.setLayoutManager(new LinearLayoutManager(getContext()));
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL);
         recyclerViewDataFragmentUpcomingMovie.addItemDecoration(dividerItemDecoration);
         recyclerViewDataFragmentUpcomingMovie.setAdapter(adapterUpcomingMovie);
     }
@@ -111,5 +117,11 @@ public class UpcomingMovieFragment extends Fragment implements UpcomingMovieView
                 message,
                 Toast.LENGTH_LONG
         ).show();
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState){
+        super.onSaveInstanceState(outState);
+        outState.putString(STATE_RESULT, mChecked);
     }
 }

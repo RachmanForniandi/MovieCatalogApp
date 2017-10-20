@@ -29,6 +29,8 @@ public class NowPlayingFragment extends Fragment implements NowPlayingView{
 
     private final String TAG = getClass().getSimpleName();
     private NowPlayingPresenter nowPlayingPresenter;
+    private static String STATE_RESULT = "state_result";
+    private String mChecked;
 
     @BindView(R.id.progressbar_loading_now_playing)
     ProgressBar progressBarLoadingFragmentNowPlaying;
@@ -46,18 +48,18 @@ public class NowPlayingFragment extends Fragment implements NowPlayingView{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
         View viewRoot = inflater.inflate(R.layout.fragment_now_playing, container, false);
         ButterKnife.bind(this, viewRoot);
         initPresenter();
         onAttachView();
         doLoadData();
-        return viewRoot;
-    }
 
-    private void doLoadData(){
-        progressBarLoadingFragmentNowPlaying.setVisibility(View.VISIBLE);
-        recyclerViewDataFragmentNowPlaying.setVisibility(View.GONE);
-        nowPlayingPresenter.onLoadData(getContext());
+        if (savedInstanceState != null){
+            mChecked = savedInstanceState.getString(STATE_RESULT);
+        }
+
+        return viewRoot;
     }
 
     private void initPresenter(){
@@ -72,6 +74,12 @@ public class NowPlayingFragment extends Fragment implements NowPlayingView{
     @Override
     public void onDetachView() {
         nowPlayingPresenter.onDetach();
+    }
+
+    private void doLoadData(){
+        progressBarLoadingFragmentNowPlaying.setVisibility(View.VISIBLE);
+        recyclerViewDataFragmentNowPlaying.setVisibility(View.GONE);
+        nowPlayingPresenter.onLoadData(getContext());
     }
 
     @Override
@@ -100,7 +108,6 @@ public class NowPlayingFragment extends Fragment implements NowPlayingView{
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL);
         recyclerViewDataFragmentNowPlaying.addItemDecoration(dividerItemDecoration);
         recyclerViewDataFragmentNowPlaying.setAdapter(adapterNowPlayingMovie);
-
     }
 
     @Override
@@ -112,4 +119,11 @@ public class NowPlayingFragment extends Fragment implements NowPlayingView{
                 Toast.LENGTH_LONG
         ).show();
     }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState){
+        super.onSaveInstanceState(outState);
+        outState.putString(STATE_RESULT, mChecked);
+    }
+
 }

@@ -49,6 +49,13 @@ public class MainActivity extends AppCompatActivity implements MainView, Navigat
         initViews();
         doLoadData();
         /*loadView();*/
+
+        if (savedInstanceState == null){
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fr_layout_content_main, new NowPlayingFragment())
+                    .commit();
+        }
     }
 
     private void initViews(){
@@ -202,6 +209,7 @@ public class MainActivity extends AppCompatActivity implements MainView, Navigat
             super.onBackPressed();
         }
     }
+
 }
 
 
