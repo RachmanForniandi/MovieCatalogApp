@@ -39,17 +39,20 @@ public class SearchMovieFragment extends Fragment implements SearchMovieView, Vi
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_search_movie, container, false);
+        View view = inflater.inflate(R.layout.fragment_search_movie, container, false);
         initViews(view);
         initListener();
         initPresenter();
-        onAttachView();
 
         if (savedInstanceState != null){
             mChecked = savedInstanceState.getString(STATE_RESULT);
         }
-
         return view;
+    }
+    @Override
+    public void onResume(){
+        super.onResume();
+        onAttachView();
     }
 
     private void initPresenter() {

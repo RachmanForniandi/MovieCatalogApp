@@ -202,7 +202,6 @@ public class MainActivity extends AppCompatActivity implements MainView, Navigat
 
     @Override
     public void onBackPressed(){
-        DrawerLayout drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout_activity_main);
         if (drawerLayout.isDrawerOpen(GravityCompat.START)){
             drawerLayout.closeDrawer(GravityCompat.START);
         }else {

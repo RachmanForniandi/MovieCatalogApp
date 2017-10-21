@@ -52,13 +52,19 @@ public class UpcomingMovieFragment extends Fragment implements UpcomingMovieView
         ButterKnife.bind(this, viewRoot);
         initPresenter();
         onAttachView();
-        doLoadData();
 
-        if (savedInstanceState != null){
+        if (savedInstanceState !=null){
             mChecked = savedInstanceState.getString(STATE_RESULT);
         }
         return viewRoot;
     }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        doLoadData();
+    }
+
 
     private void initPresenter() {
         upcomingMoviePresenter = new UpcomingMoviePresenter();

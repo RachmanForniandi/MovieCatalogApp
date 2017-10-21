@@ -32,6 +32,7 @@ public class NowPlayingFragment extends Fragment implements NowPlayingView{
     private static String STATE_RESULT = "state_result";
     private String mChecked;
 
+
     @BindView(R.id.progressbar_loading_now_playing)
     ProgressBar progressBarLoadingFragmentNowPlaying;
 
@@ -53,13 +54,17 @@ public class NowPlayingFragment extends Fragment implements NowPlayingView{
         ButterKnife.bind(this, viewRoot);
         initPresenter();
         onAttachView();
-        doLoadData();
 
-        if (savedInstanceState != null){
+        if (savedInstanceState !=null){
             mChecked = savedInstanceState.getString(STATE_RESULT);
         }
-
         return viewRoot;
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        doLoadData();
     }
 
     private void initPresenter(){
