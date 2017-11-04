@@ -1,6 +1,7 @@
 package com.example.android.moviecatalogapp.data.manager;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 
 import com.example.android.moviecatalogapp.data.db.DatabaseHelper;
 import com.example.android.moviecatalogapp.dm.TheApplicationContext;
@@ -28,6 +29,10 @@ public class DataManager {
 
     public Long insertDataFavorite(ResultNowPlaying resultNowPlaying)throws Exception{
         return databaseHelper.insertDataFavorite(resultNowPlaying);
+    }
+
+    public SQLiteDatabase getWritableDatabase(){
+        return databaseHelper.getWritableDatabase();
     }
 
     public Long insertDataFavorite(ResultUpcomingMovie resultUpcomingMovie)throws Exception{
