@@ -18,6 +18,7 @@ import android.view.MenuItem;
 
 import com.example.android.moviecatalogapp.R;
 import com.example.android.moviecatalogapp.primary_ui.activities.settings.SettingsActivity;
+import com.example.android.moviecatalogapp.primary_ui.fragments.favorite.FavoriteMovieFragment;
 import com.example.android.moviecatalogapp.primary_ui.fragments.nowplaying.NowPlayingFragment;
 import com.example.android.moviecatalogapp.primary_ui.fragments.search.SearchMovieFragment;
 import com.example.android.moviecatalogapp.primary_ui.fragments.upcoming.UpcomingMovieFragment;
@@ -86,6 +87,9 @@ public class MainActivity extends AppCompatActivity implements MainView, Navigat
         tabLayout.addTab(
                 tabLayout.newTab().setText(getString(R.string.search))
         );
+        tabLayout.addTab(
+                tabLayout.newTab().setText("Favorite")
+        );
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
 
@@ -101,6 +105,9 @@ public class MainActivity extends AppCompatActivity implements MainView, Navigat
                         break;
                     case 2:
                         fragmentSelected = new SearchMovieFragment();
+                        break;
+                    case 3:
+                        fragmentSelected = new FavoriteMovieFragment();
                         break;
                 }
                 if (fragmentSelected != null){

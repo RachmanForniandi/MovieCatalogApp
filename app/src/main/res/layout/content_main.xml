@@ -12,7 +12,7 @@
         android:id="@+id/tab_layout_content_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabMode="fixed"
+        app:tabMode="scrollable"
         app:tabMaxWidth="0dp"
         app:tabGravity="fill"
         app:tabBackground="@color/colorPrimary"
@@ -23,7 +23,6 @@
     <FrameLayout
         android:id="@+id/fr_layout_content_main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/tab_layout_content_main"/>
+        android:layout_height="match_parent" />
 
 </RelativeLayout>

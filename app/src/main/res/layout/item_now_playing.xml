@@ -19,7 +19,7 @@
         android:layout_marginEnd="@dimen/activity_horizontal_margin"
         android:contentDescription="@string/image_view_poster"/>
 
-   <!-- <ImageView
+    <ImageView
         android:id="@+id/img_view_add_fav_item_now_playing"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,7 +28,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:contentDescription="@string/image_view_add_fav"/>-->
+        android:contentDescription="@string/image_view_poster"/>
 
     <TextView
         android:id="@+id/tv_title_item_movie_now_playing"
@@ -36,6 +36,8 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/img_view_poster_item_now_playing_movie"
         android:layout_toEndOf="@id/img_view_poster_item_now_playing_movie"
+        android:layout_toLeftOf="@id/img_view_add_fav_item_now_playing"
+        android:layout_toStartOf="@id/img_view_add_fav_item_now_playing"
         android:textSize="16sp"
         android:textStyle="bold"
         android:ellipsize="end"/>
