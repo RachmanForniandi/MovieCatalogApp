@@ -1,5 +1,6 @@
 package com.example.android.moviecatalogapp.primary_ui.fragments.favorite;
 
+import com.example.android.moviecatalogapp.data.manager.DataManager;
 import com.example.android.moviecatalogapp.primary_ui.base.MvpPresenter;
 
 /**
@@ -21,7 +22,7 @@ class FavoriteMoviePresenter implements MvpPresenter<FavoriteMovieView>{
         favoriteMovieView = null;
     }
 
-    void onLoadData(){
-        // not yet
+    void onLoadData(DataManager dataManager){
+        dataManager.getAll();
     }
 }

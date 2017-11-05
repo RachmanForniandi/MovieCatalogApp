@@ -14,6 +14,7 @@ import android.support.annotation.Nullable;
 import com.example.android.moviecatalogapp.TheApp;
 import com.example.android.moviecatalogapp.data.db.DatabaseHelper;
 import com.example.android.moviecatalogapp.data.manager.DataManager;
+import com.example.android.moviecatalogapp.dm.component.DaggerProviderComponent;
 import com.example.android.moviecatalogapp.dm.component.ProviderComponent;
 import com.example.android.moviecatalogapp.dm.module.ProviderModule;
 
@@ -46,7 +47,7 @@ public class FavoriteMovieProvider extends ContentProvider{
             providerComponent = DaggerProviderComponent
                     .builder()
                     .providerModule(new ProviderModule(this))
-                    .appComponent(TheApp.get(getContext()).getAppComponent())
+                    .theAppComponent(TheApp.get(getContext()).getAppComponent())
                     .build();
         }
         return providerComponent;

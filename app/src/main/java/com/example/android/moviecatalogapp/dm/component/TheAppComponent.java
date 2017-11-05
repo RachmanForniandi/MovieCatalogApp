@@ -20,7 +20,7 @@ import dagger.Component;
 @Component(modules = TheAppModule.class)
 public interface TheAppComponent {
 
-    void inject(TheApp app);
+    void inject(TheApp theApp);
 
     @TheApplicationContext
     Context getContext();

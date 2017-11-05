@@ -48,8 +48,7 @@ public class MainActivity extends AppCompatActivity implements MainView, Navigat
         initPresenter();
         onAttachView();
         initViews();
-        doLoadData();
-        /*loadView();*/
+
 
         if (savedInstanceState == null){
             getSupportFragmentManager()

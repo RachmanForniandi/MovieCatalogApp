@@ -2,7 +2,7 @@ package com.example.android.moviecatalogapp.dm.component;
 
 import com.example.android.moviecatalogapp.dm.PerActivity;
 import com.example.android.moviecatalogapp.dm.module.ActivityModule;
-import com.example.android.moviecatalogapp.primary_ui.activities.main.MainActivity;
+import com.example.android.moviecatalogapp.primary_ui.activities.details.DetailMovieActivity;
 
 import dagger.Component;
 
@@ -13,5 +13,5 @@ import dagger.Component;
 @Component(dependencies = TheAppComponent.class, modules = ActivityModule.class)
 public interface ActivityComponent {
 
-    void inject(MainActivity mainActivity);
+    void inject(DetailMovieActivity detailMovieActivity);
 }

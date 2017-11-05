@@ -33,4 +33,8 @@
     <string name="email">RachmanForniandi@gmail.com</string>
     <string name="setting_locale">setting locale language</string>
     <string name="change_your_locale">change your locale language here</string>
+    <string name="image_view_add_favorite">image view add favorite</string>
+    <string name="overview">Overview</string>
+    <string name="refresh">refresh</string>
+    <string name="refresh_data">Please, refresh your data</string>
 </resources>

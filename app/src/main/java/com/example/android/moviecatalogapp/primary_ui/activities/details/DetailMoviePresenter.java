@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.example.android.moviecatalogapp.BuildConfig;
 import com.example.android.moviecatalogapp.api.MovieDbApiService;
+import com.example.android.moviecatalogapp.data.manager.DataManager;
 import com.example.android.moviecatalogapp.model.movie.detail.DetailMovie;
 import com.example.android.moviecatalogapp.primary_ui.base.MvpPresenter;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -22,6 +23,7 @@ public class DetailMoviePresenter implements MvpPresenter<DetailMovieView> {
     private final String TAG = getClass().getSimpleName();
     private DetailMovieView detailMovieView;
     private DetailMovie detailMovie;
+    private boolean isFavoriteMovie;
 
     @Override
     public void onAttach(DetailMovieView mvpView) {
@@ -33,7 +35,7 @@ public class DetailMoviePresenter implements MvpPresenter<DetailMovieView> {
 
     }
 
-    void onLoadData(long idMovie) {
+    void onLoadData(long idMovie, final DataManager dataManager) {
         detailMovie = new DetailMovie();
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BuildConfig.BASE_URL)
@@ -58,6 +60,7 @@ public class DetailMoviePresenter implements MvpPresenter<DetailMovieView> {
                     @Override
                     public void onNext(@NonNull DetailMovie detailMovie) {
                         DetailMoviePresenter.this.detailMovie = detailMovie;
+                        isFavoriteMovie = dataManager.isItemDataAlready(detailMovie.getId());
                     }
 
                     @Override
@@ -69,9 +72,32 @@ public class DetailMoviePresenter implements MvpPresenter<DetailMovieView> {
 
                     @Override
                     public void onComplete() {
-                        detailMovieView.loadData(detailMovie);
+                        detailMovieView.loadData(detailMovie, isFavoriteMovie);
                     }
                 });
+
+    }
+
+    void onAddToFavoriteMovie(DetailMovie detailMovie, DataManager dataManager){
+        Log.d(TAG, "onAddToFavoriteMovie");
+        try {
+            dataManager.insertDataFavorite(detailMovie);
+            detailMovieView.addToFavoriteMovie();
+        }catch (Exception e){
+            e.printStackTrace();
+            detailMovieView.addToFavoriteMovieFailed(e.getMessage());
+        }
+    }
+
+    void onDeleteFromFavoriteMovie(DetailMovie detailMovie, DataManager dataManager){
+        Log.d(TAG, "onDeleteFromFavoriteMovie");
+        try {
+            dataManager.deleteDataFavorite(detailMovie.getId());
+            detailMovieView.deleteFromFavoriteMovie();
+        }catch (Exception e){
+            e.printStackTrace();
+            detailMovieView.deleteFromFavoriteMovieFailed(e.getMessage());
+        }
     }
 }
 
