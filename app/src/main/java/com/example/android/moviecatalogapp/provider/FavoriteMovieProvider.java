@@ -11,14 +11,8 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import com.example.android.moviecatalogapp.TheApp;
 import com.example.android.moviecatalogapp.data.db.DatabaseHelper;
-import com.example.android.moviecatalogapp.data.manager.DataManager;
-import com.example.android.moviecatalogapp.dm.component.DaggerProviderComponent;
-import com.example.android.moviecatalogapp.dm.component.ProviderComponent;
-import com.example.android.moviecatalogapp.dm.module.ProviderModule;
-
-import javax.inject.Inject;
+import com.example.android.moviecatalogapp.data.db.FavoriteHelper;
 
 /**
  * Created by Lenovo on 11/4/2017.
@@ -31,31 +25,21 @@ public class FavoriteMovieProvider extends ContentProvider{
     private static final String BASE_PATH = "favorite";
     public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + BASE_PATH);
     private static final int FAVORITE = 1;
+    private static final int FAVORITE_ID_MOVIE = 2;
     private static final UriMatcher uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
     private SQLiteDatabase sqLiteDatabase;
-    private ProviderComponent providerComponent;
-
-    @Inject
-    DataManager dataManager;
+    private FavoriteHelper favoriteHelper;
 
     static {
         uriMatcher.addURI(AUTHORITY, BASE_PATH, FAVORITE);
+        uriMatcher.addURI(AUTHORITY,BASE_PATH + "/#", FAVORITE_ID_MOVIE);
     }
 
-    public ProviderComponent getProviderComponent(){
-        if (providerComponent == null){
-            providerComponent = DaggerProviderComponent
-                    .builder()
-                    .providerModule(new ProviderModule(this))
-                    .theAppComponent(TheApp.get(getContext()).getAppComponent())
-                    .build();
-        }
-        return providerComponent;
-    }
     @Override
     public boolean onCreate() {
-        getProviderComponent().inject(this);
-        sqLiteDatabase = dataManager.getWritableDatabase();
+        favoriteHelper = new FavoriteHelper(getContext());
+        favoriteHelper.open();
+        sqLiteDatabase = favoriteHelper.getWritableDatabase();
         return true;
     }
 

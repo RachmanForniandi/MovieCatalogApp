@@ -1,5 +1,6 @@
 package com.example.android.moviecatalogapp.primary_ui.activities.details;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.example.android.moviecatalogapp.BuildConfig;
@@ -35,7 +36,7 @@ public class DetailMoviePresenter implements MvpPresenter<DetailMovieView> {
 
     }
 
-    void onLoadData(long idMovie, final DataManager dataManager) {
+    void onLoadData(final Context context, long idMovie, final DataManager dataManager) {
         detailMovie = new DetailMovie();
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BuildConfig.BASE_URL)
@@ -60,7 +61,7 @@ public class DetailMoviePresenter implements MvpPresenter<DetailMovieView> {
                     @Override
                     public void onNext(@NonNull DetailMovie detailMovie) {
                         DetailMoviePresenter.this.detailMovie = detailMovie;
-                        isFavoriteMovie = dataManager.isItemDataAlready(detailMovie.getId());
+                        isFavoriteMovie = dataManager.isItemDataAlready(context,detailMovie.getId());
                     }
 
                     @Override
@@ -78,10 +79,10 @@ public class DetailMoviePresenter implements MvpPresenter<DetailMovieView> {
 
     }
 
-    void onAddToFavoriteMovie(DetailMovie detailMovie, DataManager dataManager){
+    void onAddToFavoriteMovie(Context context,DetailMovie detailMovie, DataManager dataManager){
         Log.d(TAG, "onAddToFavoriteMovie");
         try {
-            dataManager.insertDataFavorite(detailMovie);
+            dataManager.insertDataFavorite(context,detailMovie);
             detailMovieView.addToFavoriteMovie();
         }catch (Exception e){
             e.printStackTrace();
@@ -89,10 +90,10 @@ public class DetailMoviePresenter implements MvpPresenter<DetailMovieView> {
         }
     }
 
-    void onDeleteFromFavoriteMovie(DetailMovie detailMovie, DataManager dataManager){
+    void onDeleteFromFavoriteMovie(Context context,DetailMovie detailMovie, DataManager dataManager){
         Log.d(TAG, "onDeleteFromFavoriteMovie");
         try {
-            dataManager.deleteDataFavorite(detailMovie.getId());
+            dataManager.deleteDataFavorite(context,detailMovie.getId());
             detailMovieView.deleteFromFavoriteMovie();
         }catch (Exception e){
             e.printStackTrace();

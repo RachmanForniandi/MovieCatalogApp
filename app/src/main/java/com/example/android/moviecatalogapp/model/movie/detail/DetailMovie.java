@@ -1,15 +1,23 @@
 package com.example.android.moviecatalogapp.model.movie.detail;
 
+import android.database.Cursor;
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Generated;
 
+import static com.example.android.moviecatalogapp.data.db.DatabaseContract.*;
+import static com.example.android.moviecatalogapp.data.db.DatabaseContract.FavoriteColumns.*;
+
 
 @Generated("net.hexar.json2pojo")
 @SuppressWarnings("unused")
-public class DetailMovie {
+public class DetailMovie implements Parcelable{
 
 
     @SerializedName("adult")
@@ -325,4 +333,123 @@ public class DetailMovie {
     public void setVoteCount(Long voteCount) {
         mVoteCount = voteCount;
     }
+
+    @Override
+    public String toString(){
+        return "DetailMovie{" +
+                "mAdult=" + mAdult +
+                ", mBackdropPath='" + mBackdropPath + '\'' +
+                ", mBelongsToCollection=" + mBelongsToCollection +
+                ", mBudget=" + mBudget +
+                ", mGenres=" + mGenres +
+                ", mHomePage='" + mHomepage + '\'' +
+                ", mId=" + mId +
+                ", mImdbId='" + mImdbId + '\'' +
+                ", mOriginalLanguage='" + mOriginalLanguage + '\'' +
+                ", mOriginalTitle='" + mOriginalTitle + '\'' +
+                ", mOverview='" + mOverview + '\'' +
+                ", mPopularity=" + mPopularity +
+                ", mPosterPath='" + mPosterPath + '\'' +
+                ", mProductionCompanies=" + mProductionCompanies +
+                ", mProductionCountries=" + mProductionCountries +
+                ", mReleaseDate='" + mReleaseDate + '\'' +
+                ", mRevenue=" + mRevenue +
+                ", mRunTime=" + mRuntime +
+                ", mSpokenLanguages='" + mSpokenLanguages +
+                ", mStatus='" + mStatus + '\'' +
+                ", mTagline='" + mTagline + '\'' +
+                ", mTitle='" + mTitle + '\'' +
+                ", mVideo=" + mVideo +
+                ", mVoteAverage=" + mVoteAverage +
+                ", mVoteCount=" + mVoteCount +
+                '}';
+    }
+
+    @Override
+    public int describeContents(){
+        return 0;
+    }
+
+    public DetailMovie(Cursor cursor){
+        this.mId = getColumnLong(cursor,FAVORITE_COLUMN_ID_MOVIE);
+        this.mTitle = getColumnString(cursor, FAVORITE_COLUMN_TITLE);
+        this.mReleaseDate = getColumnString(cursor, FAVORITE_COLUMN_RELEASE_DATE);
+        this.mOverview = getColumnString(cursor, FAVORITE_COLUMN_OVERVIEW);
+        this.mPosterPath = getColumnString(cursor,FAVORITE_COLUMN_POSTER_PATH);
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeValue(this.mAdult);
+        dest.writeValue(this.mBackdropPath);
+        dest.writeParcelable((Parcelable)this.mBelongsToCollection, flags);
+        dest.writeValue(this.mBudget);
+        dest.writeValue(this.mGenres);
+        dest.writeValue(this.mHomepage);
+        dest.writeValue(this.mId);
+        dest.writeValue(this.mImdbId );
+        dest.writeValue(this.mOriginalLanguage);
+        dest.writeValue(this.mOriginalTitle);
+        dest.writeValue(this.mOverview);
+        dest.writeValue(this.mPopularity);
+        dest.writeValue(this.mPosterPath);
+        dest.writeValue(this.mProductionCompanies);
+        dest.writeValue(this.mProductionCountries);
+        dest.writeValue(this.mReleaseDate);
+        dest.writeValue(this.mRevenue);
+        dest.writeValue(this.mRuntime);
+        dest.writeValue(this.mSpokenLanguages);
+        dest.writeValue(this.mStatus);
+        dest.writeValue(this.mTagline);
+        dest.writeValue(this.mTitle);
+        dest.writeValue(this.mVideo);
+        dest.writeValue(this.mVoteAverage);
+        dest.writeValue(this.mVoteCount);
+    }
+
+
+    protected DetailMovie(Parcel in){
+        this.mAdult =(Boolean) in.readValue(Boolean.class.getClassLoader());
+        this.mBackdropPath = in.readString();
+        this.mBelongsToCollection = in.readParcelable(Object.class.getClassLoader());
+        this.mBudget =(Long)in.readValue(Long.class.getClassLoader());
+        this.mGenres = new ArrayList<Genre>();
+        in.readList(this.mGenres, Genre.class.getClassLoader());
+        this.mHomepage = in.readString();
+        this.mId = (Long)in.readValue(Long.class.getClassLoader());
+        this.mImdbId = in.readString();
+        this.mOriginalLanguage = in.readString();
+        this.mOriginalTitle = in.readString();
+        this.mOverview = in.readString();
+        this.mPopularity = (Double)in.readValue(Double.class.getClassLoader());
+        this.mPosterPath = in.readString();
+        this.mProductionCompanies = new ArrayList<ProductionCompany>();
+        in.readList(this.mProductionCompanies, ProductionCompany.class.getClassLoader());
+        this.mProductionCountries = new ArrayList<ProductionCountry>();
+        in.readList(this.mProductionCountries, ProductionCountry.class.getClassLoader());
+        this.mReleaseDate = in.readString();
+        this.mRevenue = (Long) in.readValue(Long.class.getClassLoader());
+        this.mRuntime = (Long) in.readValue(Long.class.getClassLoader());
+        this.mSpokenLanguages = new ArrayList<SpokenLanguage>();
+        in.readList(this.mSpokenLanguages, SpokenLanguage.class.getClassLoader());
+        this.mStatus = in.readString();
+        this.mTagline = in.readString();
+        this.mTitle = in.readString();
+        this.mVideo =(Boolean)in.readValue(Boolean.class.getClassLoader());
+        this.mVoteAverage = (Double)in.readValue(Double.class.getClassLoader());
+        this.mVoteCount = (Long)in.readValue(Long.class.getClassLoader());
+    }
+
+    public static final Parcelable.Creator<DetailMovie>CREATOR = new Parcelable.Creator<DetailMovie>(){
+        @Override
+        public DetailMovie createFromParcel(Parcel source){
+            return new DetailMovie(source);
+        }
+
+        @Override
+        public DetailMovie[] newArray(int size){
+            return new DetailMovie[size];
+        }
+    };
+
 }

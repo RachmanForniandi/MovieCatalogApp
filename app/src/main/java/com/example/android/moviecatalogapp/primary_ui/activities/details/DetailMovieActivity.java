@@ -112,7 +112,17 @@ public class DetailMovieActivity extends AppCompatActivity implements DetailMovi
     public void onClick(View view){
         switch (view.getId()){
             case R.id.img_view_add_to_favorite_movie_activity_detail_movie:
-                if (imgViewAddToFavoriteMovie.getTag().equals("star border")){
+                if (imgViewAddToFavoriteMovie.getTag().equals("star border")) {
+                    if (detailMovie == null) {
+                        Toast.makeText(
+                                this,
+                                R.string.refresh_data,
+                                Toast.LENGTH_LONG
+                        ).show();
+                    } else {
+                        detailMoviePresenter.onAddToFavoriteMovie(this, detailMovie, dataManager);
+                    }
+                }else{
                     if (detailMovie == null){
                         Toast.makeText(
                                 this,
@@ -120,7 +130,7 @@ public class DetailMovieActivity extends AppCompatActivity implements DetailMovi
                                 Toast.LENGTH_LONG
                         ).show();
                     }else {
-                        detailMoviePresenter.onDeleteFromFavoriteMovie(detailMovie, dataManager);
+                        detailMoviePresenter.onDeleteFromFavoriteMovie(this, detailMovie, dataManager);
                     }
                 }
                 break;
@@ -137,12 +147,12 @@ public class DetailMovieActivity extends AppCompatActivity implements DetailMovi
         progressDialog.setMessage("Loading... Please Wait");
         progressDialog.setCancelable(false);
         progressDialog.show();
-        detailMoviePresenter.onLoadData(idMovie, dataManager);
+        detailMoviePresenter.onLoadData(this, idMovie, dataManager);
     }
 
     private void doRefreshData() {
         progressDialog.show();
-        detailMoviePresenter.onLoadData(idMovie, dataManager);
+        detailMoviePresenter.onLoadData(this, idMovie, dataManager);
     }
 
     private void initPresenter() {
