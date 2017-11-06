@@ -1,9 +1,13 @@
 package com.example.android.moviecatalogapp.primary_ui.fragments.favorite;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +19,9 @@ import com.example.android.moviecatalogapp.data.manager.DataManager;
 import com.example.android.moviecatalogapp.dm.component.DaggerFragmentComponent;
 import com.example.android.moviecatalogapp.dm.component.FragmentComponent;
 import com.example.android.moviecatalogapp.dm.module.FragmentModule;
+import com.example.android.moviecatalogapp.model.movie.detail.DetailMovie;
+import com.example.android.moviecatalogapp.primary_ui.activities.details.DetailMovieActivity;
+import com.example.android.moviecatalogapp.primary_ui.fragments.favorite.AdapterFavoriteMovie.AdapterFavoriteMovie;
 
 import javax.inject.Inject;
 
@@ -69,7 +76,12 @@ public class FavoriteMovieFragment extends Fragment implements FavoriteMovieView
     }
 
     private void doLoadData() {
-        favoriteMoviePresenter.onLoadData();
+        progressBarLoadingFragmentFavoriteMovie.setVisibility(View.VISIBLE);
+        recyclerViewDataFragmentFavoriteMovie.setVisibility(View.GONE);
+        favoriteMoviePresenter.onLoadData(
+                getContext(),
+                dataManager
+        );
     }
 
     private void initPresenter() {
@@ -84,5 +96,40 @@ public class FavoriteMovieFragment extends Fragment implements FavoriteMovieView
     @Override
     public void onDetachView() {
         favoriteMoviePresenter.onDetach();
+    }
+
+    @Override
+    public void loadData(AdapterFavoriteMovie adapterFavoriteMovie){
+        progressBarLoadingFragmentFavoriteMovie.setVisibility(View.VISIBLE);
+        recyclerViewDataFragmentFavoriteMovie.setVisibility(View.GONE);
+
+        recyclerViewDataFragmentFavoriteMovie.setLayoutManager(
+                new LinearLayoutManager(getContext())
+        );
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(
+                getContext(),
+                DividerItemDecoration.VERTICAL
+        );
+        recyclerViewDataFragmentFavoriteMovie.addItemDecoration(dividerItemDecoration);
+        recyclerViewDataFragmentFavoriteMovie.setAdapter(adapterFavoriteMovie);
+    }
+
+    @Override
+    public void itemClickDetail(DetailMovie detailMovie){
+        Intent intentDetailMovieActivity = new Intent(getContext(), DetailMovieActivity.class);
+        Log.d(TAG, "idMovie" + detailMovie.getId());
+        intentDetailMovieActivity.putExtra("idMovie", detailMovie.getTitle());
+        startActivity(intentDetailMovieActivity);
+    }
+
+    @Override
+    public void itemClickShare(DetailMovie detailMovie){
+        Intent intentSharingMovie = new Intent(Intent.ACTION_SEND);
+        intentSharingMovie.setType("text/plain");
+        String bodyMessage = "Favorite Movie: " + detailMovie.getTitle();
+        intentSharingMovie.putExtra(Intent.EXTRA_SUBJECT, "Favorite Movie");
+        intentSharingMovie.putExtra(Intent.EXTRA_TEXT, bodyMessage);
+        startActivity(intentSharingMovie);
+
     }
 }

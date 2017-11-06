@@ -1,10 +1,10 @@
 package com.example.android.moviecatalogapp.data.db;
+
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-
-import com.example.android.moviecatalogapp.model.movie.detail.DetailMovie;
-
-import java.util.List;
 
 import static com.example.android.moviecatalogapp.data.db.DatabaseContract.*;
 /**
@@ -23,7 +23,7 @@ public class FavoriteHelper {
         this.context = context;
     }
 
-    public FavoriteHelper open() throws Exception{
+    public FavoriteHelper open() throws SQLException{
         databaseHelper = new DatabaseHelper(context);
         sqLiteDatabase = databaseHelper.getWritableDatabase();
         return this;
@@ -33,24 +33,24 @@ public class FavoriteHelper {
         return databaseHelper.getWritableDatabase();
     }
 
-    public Long insertDataFavorite(DetailMovie detailMovie)throws Exception{
-        return databaseHelper.insertDataFavorite(context,detailMovie);
+    public Long insertDataFavorite(ContentValues contentValues){
+        return databaseHelper.insertDataFavoriteProvider(contentValues);
     }
 
     public int deleteDataFavorite(long idMovie) throws Exception{
-        return databaseHelper.deleteDataFavorite(context, idMovie);
+        return databaseHelper.deleteDataFavoriteProvider(idMovie);
     }
 
     public int getSizeItemDataFavorite(){
-        return databaseHelper.itemCountDataFavorite(context);
+        return databaseHelper.itemCountDataFavoriteProvider();
     }
 
     public boolean isItemDataAlready(long idMovie){
-        return databaseHelper.itemDataAlreadyAdded(context, idMovie);
+        return databaseHelper.itemDataAlreadyAddedProvider(idMovie);
     }
 
-    public List<DetailMovie>getAll(Context context){
-        return databaseHelper.getAll(context);
+    public Cursor getAll(){
+        return databaseHelper.getAllProvider();
     }
 
 }

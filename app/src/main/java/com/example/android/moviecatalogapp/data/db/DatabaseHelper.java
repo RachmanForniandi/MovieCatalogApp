@@ -7,8 +7,6 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.net.Uri;
-import android.util.Log;
 
 import com.example.android.moviecatalogapp.dm.DatabaseInfo;
 import com.example.android.moviecatalogapp.dm.TheApplicationContext;
@@ -97,12 +95,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public Long insertDataFavorite(Context context, DetailMovie detailMovie)throws Exception{
-        try {
-            /*tanpa content provider*/
-            /*SQLiteDatabase sqLiteDatabase = getWritableDatabase();*/
+    public long insertDataFavoriteProvider(ContentValues contentValues){
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        return sqLiteDatabase.insert(TABLE_FAVORITE, null, contentValues);
+    }
 
-            /*dengan content provider*/
+    public Long insertDataFavorite(DetailMovie detailMovie)throws Exception{
+        try {
+
+            SQLiteDatabase sqLiteDatabase = getWritableDatabase();
             ContentValues contentValues = new ContentValues();
             contentValues.put(
                     FAVORITE_COLUMN_ID, Integer.parseInt(detailMovie.getId().toString())
@@ -149,59 +150,65 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             contentValues.put(
                     FAVORITE_COLUMN_VOTE_COUNT, String.valueOf(detailMovie.getVoteCount())
             );
-            context.getContentResolver()
-                    .insert(CONTENT_URI, contentValues);
-            /* tanpa content provider*/
-            /*return sqLiteDatabase.insert(
+
+            return sqLiteDatabase.insert(
                     FAVORITE_TABLE_NAME,
                     null,
                     contentValues
-            );*/
-            return 1L;
+            );
         }catch (Exception e){
             e.printStackTrace();
             throw e;
         }
     }
 
-    public int deleteDataFavorite(Context context, long idMovie)throws Exception{
+    public int deleteDataFavoriteProvider(long idMovie){
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        return sqLiteDatabase.delete(
+                TABLE_FAVORITE,
+                FAVORITE_COLUMN_ID + " = ?",
+                new String[]{String.valueOf(idMovie)}
+        );
+    }
+
+    public int deleteDataFavorite(long idMovie)throws Exception{
         try {
-            /* tanpa content provider*/
-            /*SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+            SQLiteDatabase sqLiteDatabase = getWritableDatabase();
             return sqLiteDatabase.delete(
                     FAVORITE_TABLE_NAME,
                     FAVORITE_COLUMN_ID_MOVIE + " = ?",
                     new String[]{String.valueOf(idMovie)}
-            );*/
-
-            /* dengan content provider*/
-            context.getContentResolver()
-                    .delete(
-                            Uri.parse(CONTENT_URI + "/" + idMovie),
-                            null,
-                            null
-                    );
-            return 1;
+            );
         }catch (Exception e){
             e.printStackTrace();
             throw e;
         }
     }
 
-    public int itemCountDataFavorite(Context context)throws Resources.NotFoundException, NullPointerException{
+    public int itemCountDataFavoriteProvider(){
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        Cursor cursor = sqLiteDatabase.query(
+                FAVORITE_TABLE_NAME,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+        );
+        return cursor.getCount();
+    }
+    public int itemCountDataFavorite()throws Resources.NotFoundException, NullPointerException{
         int itemCount;
         try {
-            /* tanpa content provider*/
-            /*SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+
+            SQLiteDatabase sqLiteDatabase = getWritableDatabase();
             Cursor cursor = sqLiteDatabase.rawQuery(
                     "SELECT * FROM " + FAVORITE_TABLE_NAME,
                     null,
                     null
-            );*/
+            );
 
-            /* dengan content provider*/
-            Cursor cursor = context.getContentResolver()
-                    .query(CONTENT_URI,null, null, null ,null);
             itemCount = cursor != null ? cursor.getCount() : 0;
             if (cursor != null){
                 cursor.close();
@@ -213,28 +220,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return itemCount;
     }
 
-    public boolean itemDataAlreadyAdded(Context context, long idMovie){
+    public boolean itemDataAlreadyAddedProvider(long idMovie){
         boolean isDataAlreadyAdded;
-
-        /* tanpa content provider*/
-        /*SQLiteDatabase sqLiteDatabase = getWritableDatabase();
-        Cursor cursor = sqLiteDatabase.rawQuery(
-                "SELECT * FROM " + FAVORITE_TABLE_NAME
-                + " WHERE "
-                + FAVORITE_COLUMN_ID_MOVIE + " = ?",
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        Cursor cursor = sqLiteDatabase.query(
+                FAVORITE_TABLE_NAME,
+                null,
+                FAVORITE_COLUMN_ID + " = ?",
                 new String[]{String.valueOf(idMovie)},
+                null,
+                null,
                 null
-        );*/
-
-        /* dengan content provider*/
-        Cursor cursor = context.getContentResolver()
-                .query(
-                        Uri.parse(CONTENT_URI + "/" + idMovie),
-                        null,
-                        null,
-                        null,
-                        null
-                );
+        );
         isDataAlreadyAdded = cursor != null && cursor.getCount() > 0;
         if (cursor != null){
             cursor.close();
@@ -242,32 +239,62 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return isDataAlreadyAdded;
     }
 
-    public List<DetailMovie> getAll(Context context)throws Resources.NotFoundException{
+    public boolean itemDataAlreadyAdded(long idMovie){
+        boolean isDataAlreadyAdded;
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(
+                "SELECT * FROM " + FAVORITE_TABLE_NAME
+                + " WHERE "
+                + FAVORITE_COLUMN_ID_MOVIE + " = ?",
+                new String[]{String.valueOf(idMovie)},
+                null
+        );
+        isDataAlreadyAdded = cursor != null && cursor.getCount() > 0;
+        if (cursor != null){
+            cursor.close();
+        }
+        return isDataAlreadyAdded;
+    }
+
+    public Cursor getAllProvider(){
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        return sqLiteDatabase.query(
+                FAVORITE_TABLE_NAME,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+        );
+    }
+
+    public List<DetailMovie> getAll()throws Resources.NotFoundException{
         List<DetailMovie> listDataDetailMovie = new ArrayList<>();
         try {
-            /* tanpa content provider*/
-            /*SQLiteDatabase sqLiteDatabase = getWritableDatabase();*/
-
-            /* tanpa content provider*/
-            /*Cursor cursor = sqLiteDatabase.rawQuery(
+            SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+            Cursor cursor = sqLiteDatabase.rawQuery(
                     "SELECT * FROM " + FAVORITE_TABLE_NAME,
                     null
-            );*/
-
-            /* dengan content provider*/
-            Uri uri = Uri.parse(CONTENT_URI + "/");
-            Cursor cursor = context.getContentResolver()
-                    .query(uri, null, null, null, null);
-
+            );
             if (cursor != null && cursor.getCount() > 0){
                 while (cursor.moveToNext()){
-                    /*DetailMovie detailMovie = new DetailMovie();
-                    detailMovie.setBackdropPath(
-                            cursor.getString(cursor.getColumnIndex(FAVORITE_COLUMN_BACKDROP_PATH))
-                    );*/
-                    //blank. Do later.
-                    //dengan content provider
-                    DetailMovie detailMovie = new DetailMovie(cursor);
+                    DetailMovie detailMovie = new DetailMovie();
+                    detailMovie.setId(
+                           Long.valueOf(cursor.getString(cursor.getColumnIndex(FAVORITE_COLUMN_ID_MOVIE)))
+                    );
+                    detailMovie.setPosterPath(
+                            cursor.getString(cursor.getColumnIndex(FAVORITE_COLUMN_POSTER_PATH))
+                    );
+                    detailMovie.setTitle(
+                            cursor.getString(cursor.getColumnIndex(FAVORITE_COLUMN_TITLE))
+                    );
+                    detailMovie.setOverview(
+                            cursor.getString(cursor.getColumnIndex(FAVORITE_COLUMN_OVERVIEW))
+                    );
+                    detailMovie.setReleaseDate(
+                            cursor.getString(cursor.getColumnIndex(FAVORITE_COLUMN_RELEASE_DATE))
+                    );
                     listDataDetailMovie.add(detailMovie);
                 }
                 cursor.close();
@@ -277,5 +304,4 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return listDataDetailMovie;
     }
-
 }
