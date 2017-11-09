@@ -20,7 +20,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import static com.example.android.favoritemovie.DatabaseContract.CONTENT_URI;
+import static com.example.android.favoritemovie.DatabaseContract.*;
 
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>{
 
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         progressBarActivityMain.setVisibility(View.VISIBLE);
         rcViewFavoriteMovieActivityMain.setVisibility(View.GONE);
     }
-    
+
     @Override
     protected void onResume(){
         super.onResume();
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        return new CursorLoader(this, CONTENT_URI,null,null,null,null);
+        return new CursorLoader(this, CONTENT_URI, null, null, null, null);
     }
 
     @Override
@@ -105,6 +105,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
-
+        // not yet
     }
 }

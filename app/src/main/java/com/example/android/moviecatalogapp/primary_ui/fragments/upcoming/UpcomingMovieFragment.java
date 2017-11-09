@@ -29,8 +29,6 @@ public class UpcomingMovieFragment extends Fragment implements UpcomingMovieView
 
     private final String TAG = getClass().getSimpleName();
     private UpcomingMoviePresenter upcomingMoviePresenter;
-    private static String STATE_RESULT = "state_result";
-    private String mChecked;
 
     @BindView(R.id.pb_loading_fragment_upcoming_movie)
     ProgressBar progressBarLoadingFragmentUpcomingMovie;
@@ -52,17 +50,13 @@ public class UpcomingMovieFragment extends Fragment implements UpcomingMovieView
         ButterKnife.bind(this, viewRoot);
         initPresenter();
         onAttachView();
-
-        if (savedInstanceState !=null){
-            mChecked = savedInstanceState.getString(STATE_RESULT);
-        }
         return viewRoot;
     }
 
     @Override
     public void onResume(){
-        super.onResume();
         doLoadData();
+        super.onResume();
     }
 
 
@@ -125,9 +119,4 @@ public class UpcomingMovieFragment extends Fragment implements UpcomingMovieView
         ).show();
     }
 
-    @Override
-    public void onSaveInstanceState(Bundle outState){
-        super.onSaveInstanceState(outState);
-        outState.putString(STATE_RESULT, mChecked);
-    }
 }

@@ -71,8 +71,13 @@ public class FavoriteMovieFragment extends Fragment implements FavoriteMovieView
         getFragmentComponent().inject(this);
         initPresenter();
         onAttachView();
-        doLoadData();
         return viewRoot;
+    }
+
+    @Override
+    public void onResume(){
+        doLoadData();
+        super.onResume();
     }
 
     private void doLoadData() {
@@ -100,8 +105,8 @@ public class FavoriteMovieFragment extends Fragment implements FavoriteMovieView
 
     @Override
     public void loadData(AdapterFavoriteMovie adapterFavoriteMovie){
-        progressBarLoadingFragmentFavoriteMovie.setVisibility(View.VISIBLE);
-        recyclerViewDataFragmentFavoriteMovie.setVisibility(View.GONE);
+        progressBarLoadingFragmentFavoriteMovie.setVisibility(View.GONE);
+        recyclerViewDataFragmentFavoriteMovie.setVisibility(View.VISIBLE);
 
         recyclerViewDataFragmentFavoriteMovie.setLayoutManager(
                 new LinearLayoutManager(getContext())
@@ -117,8 +122,8 @@ public class FavoriteMovieFragment extends Fragment implements FavoriteMovieView
     @Override
     public void itemClickDetail(DetailMovie detailMovie){
         Intent intentDetailMovieActivity = new Intent(getContext(), DetailMovieActivity.class);
-        Log.d(TAG, "idMovie" + detailMovie.getId());
-        intentDetailMovieActivity.putExtra("idMovie", detailMovie.getTitle());
+        Log.d(TAG, "idMovie: " + detailMovie.getId());
+        intentDetailMovieActivity.putExtra("idMovie", detailMovie.getId());
         startActivity(intentDetailMovieActivity);
     }
 

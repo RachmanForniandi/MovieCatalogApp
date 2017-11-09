@@ -3,8 +3,10 @@
     package="com.example.android.moviecatalogapp">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+
     <permission android:name="com.example.android.moviecatalogapp.READ_DATABASE"
         android:protectionLevel="normal"/>
+
     <permission android:name="com.example.android.moviecatalogapp.WRITE_DATABASE"
         android:protectionLevel="normal"/>
 
@@ -26,11 +28,13 @@
 
         <activity android:name=".primary_ui.activities.alarm_reminder.dailies.DailyReminderActivity"/>
 
-        <receiver android:name=".feature.alarm_reminder.daily.DailyAlarmReceiver"
+        <receiver
+            android:name=".feature.alarm_reminder.daily.DailyAlarmReceiver"
             android:enabled="true"
             android:exported="true"/>
 
-        <activity android:name=".primary_ui.activities.details.DetailMovieActivity"
+        <activity
+            android:name=".primary_ui.activities.details.DetailMovieActivity"
             android:theme="@style/AppTheme"/>
 
         <service

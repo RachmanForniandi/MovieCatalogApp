@@ -17,7 +17,7 @@ public class FavoriteHelper {
     private static final String FAVORITE_TABLE_NAME = TABLE_FAVORITE;
     private Context context;
     private DatabaseHelper databaseHelper;
-    SQLiteDatabase sqLiteDatabase;
+    private SQLiteDatabase sqLiteDatabase;
 
     public FavoriteHelper(Context context){
         this.context = context;
@@ -37,7 +37,7 @@ public class FavoriteHelper {
         return databaseHelper.insertDataFavoriteProvider(contentValues);
     }
 
-    public int deleteDataFavorite(long idMovie) throws Exception{
+    public int deleteDataFavorite(long idMovie){
         return databaseHelper.deleteDataFavoriteProvider(idMovie);
     }
 

@@ -22,8 +22,6 @@ public class SearchMovieFragment extends Fragment implements SearchMovieView, Vi
 
     private final String TAG = getClass().getSimpleName();
     private SearchMoviePresenter searchMoviePresenter;
-    private static String STATE_RESULT = "state_result";
-    private String mChecked;
 
     private EditText etKeywordSearchMovieFragment;
     private Button btnSearchMovieFragment;
@@ -39,30 +37,39 @@ public class SearchMovieFragment extends Fragment implements SearchMovieView, Vi
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_search_movie, container, false);
+        view  = inflater.inflate(R.layout.fragment_search_movie, container, false);
         initViews(view);
         initListener();
         initPresenter();
-
-        if (savedInstanceState != null){
-            mChecked = savedInstanceState.getString(STATE_RESULT);
-        }
+        onAttachView();
         return view;
     }
+
     @Override
     public void onResume(){
         super.onResume();
         onAttachView();
     }
 
-    private void initPresenter() {
-        searchMoviePresenter = new SearchMoviePresenter();
-    }
 
     private void initListener(){
         btnSearchMovieFragment.setOnClickListener(this);
     }
 
+
+    private void initViews(View view) {
+        etKeywordSearchMovieFragment = (EditText)view.findViewById(R.id.et_keyword_search_movie_fragment);
+        btnSearchMovieFragment = (Button)view.findViewById(R.id.btn_search_movie_fragment);
+        recyclerViewSearchMovieFragment =(RecyclerView)view.findViewById(R.id.rcView_search_movie_fragment);
+        recyclerViewSearchMovieFragment.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerViewSearchMovieFragment.addItemDecoration(
+                new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL)
+        );
+    }
+
+    private void initPresenter() {
+        searchMoviePresenter = new SearchMoviePresenter();
+    }
 
     @Override
     public void onAttachView() {
@@ -72,16 +79,6 @@ public class SearchMovieFragment extends Fragment implements SearchMovieView, Vi
     @Override
     public void onDetachView() {
         searchMoviePresenter.onDetach();
-    }
-
-    public void initViews(View view) {
-        etKeywordSearchMovieFragment = (EditText)view.findViewById(R.id.et_keyword_search_movie_fragment);
-        btnSearchMovieFragment = (Button)view.findViewById(R.id.btn_search_movie_fragment);
-        recyclerViewSearchMovieFragment =(RecyclerView)view.findViewById(R.id.rcView_search_movie_fragment);
-        recyclerViewSearchMovieFragment.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerViewSearchMovieFragment.addItemDecoration(
-                new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL)
-        );
     }
 
     @Override
@@ -134,9 +131,4 @@ public class SearchMovieFragment extends Fragment implements SearchMovieView, Vi
         startActivity(intentDetailMovieActivity);
     }
 
-    @Override
-    public void onSaveInstanceState(Bundle outState){
-        super.onSaveInstanceState(outState);
-        outState.putString(STATE_RESULT, mChecked);
-    }
 }

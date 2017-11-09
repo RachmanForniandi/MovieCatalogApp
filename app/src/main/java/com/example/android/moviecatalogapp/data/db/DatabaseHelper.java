@@ -102,7 +102,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public Long insertDataFavorite(DetailMovie detailMovie)throws Exception{
         try {
-
             SQLiteDatabase sqLiteDatabase = getWritableDatabase();
             ContentValues contentValues = new ContentValues();
             contentValues.put(
@@ -142,10 +141,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     FAVORITE_COLUMN_TITLE, detailMovie.getTitle()
             );
             contentValues.put(
-                    FAVORITE_COLUMN_VIDEO, detailMovie.getVideo()
+                    FAVORITE_COLUMN_VIDEO, String.valueOf(detailMovie.getVideo())
             );
             contentValues.put(
-                    FAVORITE_COLUMN_VOTE_AVERAGE, detailMovie.getVoteAverage()
+                    FAVORITE_COLUMN_VOTE_AVERAGE, String.valueOf(detailMovie.getVoteAverage())
             );
             contentValues.put(
                     FAVORITE_COLUMN_VOTE_COUNT, String.valueOf(detailMovie.getVoteCount())
@@ -198,10 +197,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         );
         return cursor.getCount();
     }
+
     public int itemCountDataFavorite()throws Resources.NotFoundException, NullPointerException{
         int itemCount;
         try {
-
             SQLiteDatabase sqLiteDatabase = getWritableDatabase();
             Cursor cursor = sqLiteDatabase.rawQuery(
                     "SELECT * FROM " + FAVORITE_TABLE_NAME,

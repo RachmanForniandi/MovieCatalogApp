@@ -80,6 +80,12 @@ public class DetailMovieActivity extends AppCompatActivity implements DetailMovi
         onLoadData();
     }
 
+    @Override
+    protected void onResume(){
+        onLoadData();
+        super.onResume();
+    }
+
     private void setToolbar() {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -139,7 +145,7 @@ public class DetailMovieActivity extends AppCompatActivity implements DetailMovi
 
     private void onLoadData() {
         Bundle bundle = getIntent().getExtras();
-        long idMovie = bundle.getLong("idMovie");
+        idMovie = bundle.getLong("idMovie");
 
         if (progressDialog == null){
             progressDialog = new ProgressDialog(this);
@@ -171,6 +177,7 @@ public class DetailMovieActivity extends AppCompatActivity implements DetailMovi
 
     @Override
     public void loadData(DetailMovie detailMovie, boolean isFavoriteMovie){
+        this.detailMovie = detailMovie;
         progressDialog.dismiss();
         tViewTitleDetailMovie.setText(detailMovie.getOriginalTitle());
         tViewOverviewDetailMovie.setText(detailMovie.getOverview());
@@ -221,7 +228,7 @@ public class DetailMovieActivity extends AppCompatActivity implements DetailMovi
 
     @Override
     public void deleteFromFavoriteMovie(){
-        imgViewAddToFavoriteMovie.setBackgroundResource(R.drawable.ic_star_black_24dp);
+        imgViewAddToFavoriteMovie.setBackgroundResource(R.drawable.ic_star_border_black_24dp);
         imgViewAddToFavoriteMovie.setTag("star border");
     }
 

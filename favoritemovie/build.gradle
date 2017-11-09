@@ -26,14 +26,14 @@ android {
             applicationIdSuffix ".production"
             buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
             buildConfigField("String", "API_KEY", "\"04a5984bb20ef987a182de11ee3810b4\"")
-            buildConfigField("String", "LANGUAGE", "\"en-us\"")
+            buildConfigField("String", "LANGUAGE", "\"en-US\"")
             buildConfigField("String", "BASE_URL_IMAGE", "\"http://image.tmdb.org/t/p/w185/\"")
         }
         development {
             applicationIdSuffix ".development"
             buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
             buildConfigField("String", "API_KEY", "\"04a5984bb20ef987a182de11ee3810b4\"")
-            buildConfigField("String", "LANGUAGE", "\"en-us\"")
+            buildConfigField("String", "LANGUAGE", "\"en-US\"")
             buildConfigField("String", "BASE_URL_IMAGE", "\"http://image.tmdb.org/t/p/w185/\"")
         }
     }

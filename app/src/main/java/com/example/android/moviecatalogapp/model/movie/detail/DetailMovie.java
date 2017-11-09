@@ -19,7 +19,6 @@ import static com.example.android.moviecatalogapp.data.db.DatabaseContract.Favor
 @SuppressWarnings("unused")
 public class DetailMovie implements Parcelable{
 
-
     @SerializedName("adult")
     private Boolean mAdult;
 
@@ -371,7 +370,6 @@ public class DetailMovie implements Parcelable{
     }
 
     public DetailMovie(Cursor cursor){
-        /*this.mId = getColumnLong(cursor,FAVORITE_COLUMN_ID_MOVIE);*/
         this.mId = getColumnLong(cursor,FAVORITE_COLUMN_ID);
         this.mTitle = getColumnString(cursor, FAVORITE_COLUMN_TITLE);
         this.mReleaseDate = getColumnString(cursor, FAVORITE_COLUMN_RELEASE_DATE);
@@ -382,27 +380,27 @@ public class DetailMovie implements Parcelable{
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeValue(this.mAdult);
-        dest.writeValue(this.mBackdropPath);
+        dest.writeString(this.mBackdropPath);
         dest.writeParcelable((Parcelable)this.mBelongsToCollection, flags);
         dest.writeValue(this.mBudget);
-        dest.writeValue(this.mGenres);
-        dest.writeValue(this.mHomepage);
+        dest.writeList(this.mGenres);
+        dest.writeString(this.mHomepage);
         dest.writeValue(this.mId);
-        dest.writeValue(this.mImdbId );
-        dest.writeValue(this.mOriginalLanguage);
-        dest.writeValue(this.mOriginalTitle);
-        dest.writeValue(this.mOverview);
+        dest.writeString(this.mImdbId );
+        dest.writeString(this.mOriginalLanguage);
+        dest.writeString(this.mOriginalTitle);
+        dest.writeString(this.mOverview);
         dest.writeValue(this.mPopularity);
-        dest.writeValue(this.mPosterPath);
-        dest.writeValue(this.mProductionCompanies);
-        dest.writeValue(this.mProductionCountries);
-        dest.writeValue(this.mReleaseDate);
+        dest.writeString(this.mPosterPath);
+        dest.writeList(this.mProductionCompanies);
+        dest.writeList(this.mProductionCountries);
+        dest.writeString(this.mReleaseDate);
         dest.writeValue(this.mRevenue);
         dest.writeValue(this.mRuntime);
-        dest.writeValue(this.mSpokenLanguages);
-        dest.writeValue(this.mStatus);
-        dest.writeValue(this.mTagline);
-        dest.writeValue(this.mTitle);
+        dest.writeList(this.mSpokenLanguages);
+        dest.writeString(this.mStatus);
+        dest.writeString(this.mTagline);
+        dest.writeString(this.mTitle);
         dest.writeValue(this.mVideo);
         dest.writeValue(this.mVoteAverage);
         dest.writeValue(this.mVoteCount);

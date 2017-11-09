@@ -20,7 +20,7 @@ import com.example.android.moviecatalogapp.data.db.FavoriteHelper;
 
 public class FavoriteMovieProvider extends ContentProvider{
 
-    private final String TAG =getClass().getSimpleName();
+    private final String TAG = getClass().getSimpleName();
     private static final String AUTHORITY = "com.example.android.moviecatalogapp";
     private static final String BASE_PATH = "favorite";
     public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + BASE_PATH);
@@ -69,7 +69,7 @@ public class FavoriteMovieProvider extends ContentProvider{
                     .notifyChange(uri, null);
             return mUri;
         }
-        throw new SQLException("Insertion Failed for URI: "+ uri);
+        throw new SQLException("Insertion Failed for URI: " + uri);
     }
 
     @Override

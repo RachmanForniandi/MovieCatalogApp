@@ -6,7 +6,9 @@
     android:paddingTop="@dimen/item_rc_view_vertical_margin"
     android:paddingRight="@dimen/item_rc_view_horizontal_margin"
     android:paddingLeft="@dimen/item_rc_view_horizontal_margin"
-    android:paddingBottom="@dimen/item_rc_view_vertical_margin">
+    android:paddingBottom="@dimen/item_rc_view_vertical_margin"
+    android:background="@drawable/background_rounded_white">
+
 
     <ImageView
         android:id="@+id/img_view_poster_item_upcoming_movie"

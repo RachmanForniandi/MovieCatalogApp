@@ -10,6 +10,7 @@ import com.example.android.moviecatalogapp.primary_ui.fragments.search.adapter.A
  */
 
 interface SearchMovieView extends MvpView {
+
     void searchMovie(AdapterSearchMovie adapterSearchMovie);
 
     void searchMovieFailed();

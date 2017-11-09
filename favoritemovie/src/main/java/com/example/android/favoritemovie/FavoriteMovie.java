@@ -18,7 +18,6 @@ import static com.example.android.favoritemovie.DatabaseContract.getColumnString
 
 public class FavoriteMovie implements Parcelable{
 
-
     private Long mId;
     private String mTitle;
     private String mReleaseDate;
@@ -121,5 +120,4 @@ public class FavoriteMovie implements Parcelable{
                 ", mPosterPath='" + mPosterPath + '\'' +
                 '}';
     }
-
 }
