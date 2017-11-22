@@ -1,10 +1,13 @@
 package com.example.android.moviecatalogapp.primary_ui.activities.details;
 
 import android.app.ProgressDialog;
+import android.appwidget.AppWidgetManager;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,6 +24,7 @@ import com.example.android.moviecatalogapp.dm.component.ActivityComponent;
 import com.example.android.moviecatalogapp.dm.component.DaggerActivityComponent;
 import com.example.android.moviecatalogapp.dm.module.ActivityModule;
 import com.example.android.moviecatalogapp.model.movie.detail.DetailMovie;
+import com.example.android.moviecatalogapp.widgets.FavoriteMovieWidget;
 
 import javax.inject.Inject;
 
@@ -146,6 +150,7 @@ public class DetailMovieActivity extends AppCompatActivity implements DetailMovi
     private void onLoadData() {
         Bundle bundle = getIntent().getExtras();
         idMovie = bundle.getLong("idMovie");
+        Log.d(TAG, "idMovie: " + idMovie);
 
         if (progressDialog == null){
             progressDialog = new ProgressDialog(this);
@@ -208,7 +213,17 @@ public class DetailMovieActivity extends AppCompatActivity implements DetailMovi
     public void addToFavoriteMovie(){
         imgViewAddToFavoriteMovie.setBackgroundResource(R.drawable.ic_star_black_24dp);
         imgViewAddToFavoriteMovie.setTag("star full");
+        refreshFavoriteMovieWidget();
     }
+
+    private void refreshFavoriteMovieWidget() {
+        Log.d(TAG, "refreshFavoriteMovieWidget");
+        Intent intentFavoriteMovieWidget = new Intent(this, FavoriteMovieWidget.class);
+        intentFavoriteMovieWidget.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
+        sendBroadcast(intentFavoriteMovieWidget);
+
+    }
+
 
     @Override
     public void addToFavoriteMovieFailed(String message){
@@ -230,6 +245,7 @@ public class DetailMovieActivity extends AppCompatActivity implements DetailMovi
     public void deleteFromFavoriteMovie(){
         imgViewAddToFavoriteMovie.setBackgroundResource(R.drawable.ic_star_border_black_24dp);
         imgViewAddToFavoriteMovie.setTag("star border");
+        refreshFavoriteMovieWidget();
     }
 
     @Override

@@ -2,13 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.android.moviecatalogapp">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-    <permission android:name="com.example.android.moviecatalogapp.READ_DATABASE"
-        android:protectionLevel="normal"/>
-
-    <permission android:name="com.example.android.moviecatalogapp.WRITE_DATABASE"
-        android:protectionLevel="normal"/>
+    <permission
+        android:name="com.example.android.moviecatalogapp.READ_DATABASE"
+        android:protectionLevel="normal" />
+    <permission
+        android:name="com.example.android.moviecatalogapp.WRITE_DATABASE"
+        android:protectionLevel="normal" />
 
     <application
         android:name=".TheApp"
@@ -25,17 +27,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".primary_ui.activities.alarm_reminder.dailies.DailyReminderActivity"/>
+        <activity android:name=".primary_ui.activities.alarm_reminder.dailies.DailyReminderActivity" />
 
         <receiver
             android:name=".feature.alarm_reminder.daily.DailyAlarmReceiver"
             android:enabled="true"
-            android:exported="true"/>
+            android:exported="true" />
 
         <activity
             android:name=".primary_ui.activities.details.DetailMovieActivity"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme" />
 
         <service
             android:name=".feature.alarm_reminder.upcoming.UpcomingMoviesJobService"
@@ -46,15 +47,29 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".primary_ui.activities.settings.SettingsActivity"
-            android:theme="@style/AppTheme"/>
+        <activity
+            android:name=".primary_ui.activities.settings.SettingsActivity"
+            android:theme="@style/AppTheme" />
+
         <provider
-            android:authorities="com.example.android.moviecatalogapp"
             android:name=".provider.FavoriteMovieProvider"
+            android:authorities="com.example.android.moviecatalogapp"
             android:exported="true"
             android:readPermission="com.example.android.moviecatalogapp.READ_DATABASE"
-            android:writePermission="com.example.android.moviecatalogapp.WRITE_DATABASE"/>
+            android:writePermission="com.example.android.moviecatalogapp.WRITE_DATABASE" />
 
+        <receiver android:name=".widgets.FavoriteMovieWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/favorite_movie_widget_info" />
+        </receiver>
+
+        <service android:name=".widgets.StackWidgetService"
+            android:permission="android.permission.BIND_REMOTEVIEWS"/>
     </application>
 
 </manifest>

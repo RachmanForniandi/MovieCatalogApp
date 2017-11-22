@@ -34,4 +34,11 @@
     <string name="email">RachmanForniandi@gmail.com</string>
     <string name="setting_locale">Pengaturan Lokal</string>
     <string name="change_your_locale">Ubah Bahasa Lokal Anda Disini</string>
+    <string name="image_view_add_favorite">image view add favorite</string>
+    <string name="overview">Overview</string>
+    <string name="refresh">Refresh</string>
+    <string name="refresh_data">Mohon, Lakukan Penyegaran Data</string>
+    <string name="appwidget_text">CONTOH</string>
+    <string name="add_widget">Tambahkan Widget</string>
+    <string name="empty_text">Tidak Ada Data</string>
 </resources>

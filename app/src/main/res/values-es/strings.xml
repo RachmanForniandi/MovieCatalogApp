@@ -34,4 +34,11 @@
     <string name="email">RachmanForniandi@gmail.com</string>
     <string name="setting_locale">Configuración de la Configuración regional</string>
     <string name="change_your_locale">Cambie su idioma Local Aquí</string>
+    <string name="image_view_add_favorite">Vista de imagen agregar favorito</string>
+    <string name="overview">Visión de conjunto</string>
+    <string name="refresh">Refrescar</string>
+    <string name="refresh_data">Por favor, actualiza tus datos</string>
+    <string name="appwidget_text">EJEMPLO</string>
+    <string name="add_widget">Agregar widget</string>
+    <string name="empty_text">Sin Datos</string>
 </resources>
