@@ -263,4 +263,6 @@ public class DetailMovieActivity extends AppCompatActivity implements DetailMovi
                 .create();
         alertDialogError.show();
     }
+
+
 }

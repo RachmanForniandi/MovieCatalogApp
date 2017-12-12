@@ -97,6 +97,7 @@ public class NowPlayingFragment extends Fragment implements NowPlayingView{
         startActivity(intentSharingMovie);
     }
 
+
     @Override
     public void loadData(AdapterNowPlayingMovie adapterNowPlayingMovie) {
         progressBarLoadingFragmentNowPlaying.setVisibility(View.GONE);

@@ -90,6 +90,7 @@ public class FavoriteMovieWidget extends AppWidgetProvider {
 
             Intent detailMovieActivity = new Intent(context, DetailMovieActivity.class);
             long idMovie = intent.getLongExtra(EXTRA_ITEM, 0);
+            detailMovieActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             detailMovieActivity.putExtra("idMovie", idMovie);
             context.startActivity(detailMovieActivity);
 
