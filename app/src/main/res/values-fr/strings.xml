@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CatalogueDeFilmsApp</string>
+    <string name="hello_blank_fragment">Bonjour fragment vide</string>
+    <string name="keyword_validation_message">Le mot-clé est vide. Complétez-le pour commencer à chercher un film</string>
+    <string name="image_view_poster">Affiche de vue d image</string>
+    <string name="title_movie">Title Movie</string>
+    <string name="overview_movie">Vue d ensemble Film</string>
+    <string name="release_date">Date de sortie</string>
+    <string name="daily_reminder">Daily Reminder</string>
+    <string name="upcoming_reminder">Rappel quotidien</string>
+    <string name="message_daily_reminder">Hé, regardez-le !</string>
+    <string name="now_playing">Lecture en cours</string>
+    <string name="upcoming">prochain</string>
+    <string name="date">la Date</string>
+    <string name="_02_09_2017">02-09-2017</string>
+    <string name="set_date">régler la date</string>
+    <string name="time">Temps</string>
+    <string name="_13_30">13:30</string>
+    <string name="set_time">Régler la Temps</string>
+    <string name="save">Sauver</string>
+    <string name="detail">Détail</string>
+    <string name="share">Partager</string>
+    <string name="search">Chercher</string>
+    <string name="settings">réglage</string>
+    <string name="notification">Notification</string>
+    <string name="daily_reminder_notification">Notification de Rappel Quotidien</string>
+    <string name="turn_on_off_daily_reminder">Activer / Désactiver le Rappel Quotidien</string>
+    <string name="upcoming_reminder_notification">Notification de Rappel Rapprochée</string>
+    <string name="turn_on_off_upcoming_reminder">Activer / Désactiver Rappel à Venir</string>
+    <string name="nav_draw_open">Ouvrir le Tiroir de Navigation</string>
+    <string name="nav_draw_close">Fermer le Tiroir de Navigation</string>
+    <string name="user_name">Rachman Forniandi</string>
+    <string name="email">RachmanForniandi@gmail.com</string>
+    <string name="setting_locale">Définir la Langue Locale</string>
+    <string name="change_your_locale">Modifiez Votre Langue Locale ici</string>
+    <string name="image_view_add_favorite">image voir ajouter aux favoris</string>
+    <string name="overview">Aperçu</string>
+    <string name="refresh">Rafraîchir</string>
+    <string name="refresh_data">Veuillez actualiser vos données</string>
+    <string name="appwidget_text">EXEMPLE</string>
+    <string name="add_widget">Ajouter un widget</string>
+    <string name="empty_text">Pas de données</string>
+</resources>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relative_layout_container_item_search"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/img_view_poster_item_search_movie"
+            android:layout_width="100dp"
+            android:layout_height="120dp"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginStart="0dp"
+            android:contentDescription="@string/image_view_poster"
+            android:scaleType="fitXY" />
+
+        <TextView
+            android:id="@+id/tv_title_item_movie_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/title_movie"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:maxLines="1"
+            android:layout_toRightOf="@id/img_view_poster_item_search_movie"
+            android:layout_toEndOf="@id/img_view_poster_item_search_movie"
+            android:ellipsize="end"/>
+
+        <TextView
+            android:id="@+id/tv_description_item_movie_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/overview_movie"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="16sp"
+            android:maxLines="2"
+            android:layout_toRightOf="@id/img_view_poster_item_search_movie"
+            android:layout_toEndOf="@id/img_view_poster_item_search_movie"
+            android:layout_below="@id/tv_title_item_movie_search"
+            android:ellipsize="end"/>
+
+        <TextView
+            android:id="@+id/tv_date_release_item_movie_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/release_date"
+            android:textSize="16sp"
+            android:textColor="@android:color/darker_gray"
+            android:layout_toRightOf="@id/img_view_poster_item_search_movie"
+            android:layout_toEndOf="@id/img_view_poster_item_search_movie"
+            android:layout_below="@id/tv_description_item_movie_search"
+            android:ellipsize="end"/>
+
+</RelativeLayout>
